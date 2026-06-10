@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 92a5b07779d24d7ca4e9d093b65c3f8d
+timeCreated: 1732806463
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralShaders/Editor/PropertyDrawers/BindGradientToTextureDrawer.cs
+  uploadId: 850742

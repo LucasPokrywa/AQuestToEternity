@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 8d5a4dbd6b6a496eb6125ee7fd84f122
+timeCreated: 1764973654
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationCommon/Runtime/RuntimeGenerationSample/BodySwitcher.cs
+  uploadId: 850742

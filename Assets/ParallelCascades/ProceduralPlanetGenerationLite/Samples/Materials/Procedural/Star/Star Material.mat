@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Star Material
+  m_Shader: {fileID: -6465566751694194690, guid: 0008524477ece014b9b2f51749e2f4b1, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Color_Gradient_Texture:
+        m_Texture: {fileID: 2800000, guid: 13de24ad2e9f65246abc9e205c4fa5c4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Flow_Map:
+        m_Texture: {fileID: 2800000, guid: 3296236964d16cf48bc671421254d9eb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SphericalFlowMapTime_290c419f87fe49cdb76ab5c58814d4ce_PhaseOffsetMask_1356023076_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 6ecef2771371cce45aad5de55be9d7ba, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Static_Cubemap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Cubemap_Face: 0
+    - _Cubemap_Face_Resolution: 2048
+    - _Filtering_Detail: 1
+    - _Flow_Map_Speed: 0.05
+    - _Flow_Speed: 0.1301702
+    - _Flow_Strength: 0.5
+    - _Fresnel_Power: 2
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RENDER_MODE: 0
+    - _Scale: 3.4495375
+    - _Warp_Amount: 1.8829589
+    m_Colors:
+    - _Color_Q: {r: 0.91601616, g: 0.4623345, b: 0.2630618, a: 1}
+    - _Color_R: {r: 0.9641284, g: 0.86896294, b: 0.827163, a: 1}
+    - _Fresnel_Color: {r: 1, g: 0.30883878, b: 0.0052568307, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &8530842642298767872
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 10

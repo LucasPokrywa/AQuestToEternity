@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 9a36bdb0719744a7846712031642bd70
+timeCreated: 1753700559
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/Common/Runtime/InspectorButtonAttribute.cs
+  uploadId: 850742

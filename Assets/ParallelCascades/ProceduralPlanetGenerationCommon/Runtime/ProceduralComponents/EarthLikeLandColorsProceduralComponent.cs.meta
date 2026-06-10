@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 8dfc42bf59da97843bba4bf2be674eff
+timeCreated: 1760629030
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationCommon/Runtime/ProceduralComponents/EarthLikeLandColorsProceduralComponent.cs
+  uploadId: 850742

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: fe3ed779c5521534a8a4cb1ff1460dcc
+timeCreated: 1758034091
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationCommon/Runtime/ProceduralComponents/CoronaGlowProceduralComponent.cs
+  uploadId: 850742

@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: f61918eaa8970c34a9b9e32ce339cf7c
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationCommon/PostProcessing/PostFXGlowPass.cs
+  uploadId: 850742

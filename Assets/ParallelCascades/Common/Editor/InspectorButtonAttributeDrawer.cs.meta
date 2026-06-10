@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 3837131d3c4c4fbcb0498a3c07d94842
+timeCreated: 1753701076
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/Common/Editor/InspectorButtonAttributeDrawer.cs
+  uploadId: 850742

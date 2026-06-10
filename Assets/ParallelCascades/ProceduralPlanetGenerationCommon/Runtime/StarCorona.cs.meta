@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 856707b5af4499a4e8e521a6c1d9c8a9
+timeCreated: 1731583209
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationCommon/Runtime/StarCorona.cs
+  uploadId: 850742

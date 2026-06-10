@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 820b6f25c3d043b5bb635ff521b51009
+timeCreated: 1753345396
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralShaders/Runtime/RuntimeTextureUtilities.cs
+  uploadId: 850742

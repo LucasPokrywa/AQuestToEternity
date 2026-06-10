@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 89214618e0b44e69bb79d4063b346645
+timeCreated: 1763023507
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGeneration/Runtime/CustomLighting/MainSpaceLight.cs
+  uploadId: 850742

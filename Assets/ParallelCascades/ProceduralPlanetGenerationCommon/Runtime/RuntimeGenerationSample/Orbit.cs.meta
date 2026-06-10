@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 76005f2b4d894a74905176f20a14428b
+timeCreated: 1763023145
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationCommon/Runtime/RuntimeGenerationSample/Orbit.cs
+  uploadId: 850742

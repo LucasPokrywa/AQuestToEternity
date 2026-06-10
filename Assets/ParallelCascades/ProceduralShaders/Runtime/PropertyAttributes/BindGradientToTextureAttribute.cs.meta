@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 07b0a067c7d441539b62c8706175a8ad
+timeCreated: 1732806370
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralShaders/Runtime/PropertyAttributes/BindGradientToTextureAttribute.cs
+  uploadId: 850742

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 0fed4273be9d431188d47e9ff1e76070
+timeCreated: 1764977009
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationCommon/Runtime/RuntimeGenerationSample/SystemRandomizer.cs
+  uploadId: 850742

@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 56317e217df5753409148b5e1d90a98b
+timeCreated: 1758009642
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationCommon/Runtime/ProceduralBodyBase.cs
+  uploadId: 850742

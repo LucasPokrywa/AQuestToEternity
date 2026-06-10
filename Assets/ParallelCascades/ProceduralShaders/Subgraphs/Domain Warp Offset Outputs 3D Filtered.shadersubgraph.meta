@@ -1,0 +1,11 @@
+﻿fileFormatVersion: 2
+guid: aa188ea3b406879419605bfc022e8e99
+timeCreated: 1719323832
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralShaders/Subgraphs/Domain Warp Offset
+    Outputs 3D Filtered.shadersubgraph
+  uploadId: 850742

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: ea553479541c4e06a5b8e0548cd641f3
+timeCreated: 1765881777
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationLite/Runtime/GasGiantPatternSimplifiedProceduralComponent.cs
+  uploadId: 850742

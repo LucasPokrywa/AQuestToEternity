@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c9191d71886e4d7cb6bcb011e52ec470
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - m_UXMLDocument: {fileID: 9197481963319205126, guid: a96251e048eb071499d8435b9be04ec7,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationLite/Editor/WelcomeWindow.cs
+  uploadId: 850742

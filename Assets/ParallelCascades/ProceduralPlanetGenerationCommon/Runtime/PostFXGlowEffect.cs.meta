@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: f9234b83ec11dea4b9ad075ca9d44f6c
+timeCreated: 1734702677
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationCommon/Runtime/PostFXGlowEffect.cs
+  uploadId: 850742

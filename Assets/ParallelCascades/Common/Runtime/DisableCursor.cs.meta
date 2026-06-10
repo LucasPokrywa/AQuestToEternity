@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: 6140f304cd914ee9825541e448578398
+timeCreated: 1750691538
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/Common/Runtime/DisableCursor.cs
+  uploadId: 850742

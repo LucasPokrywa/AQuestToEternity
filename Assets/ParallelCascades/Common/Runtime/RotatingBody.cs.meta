@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: d1644a6d2cdd4392944d9d7e613fb073
+timeCreated: 1753186909
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/Common/Runtime/RotatingBody.cs
+  uploadId: 850742

@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 359c6c4a2cd7446ba38187068207e34d
+AssetOrigin:
+  serializedVersion: 1
+  productId: 296362
+  packageName: Procedural Planet Generation - Lite
+  packageVersion: 3.1.0
+  assetPath: Assets/ParallelCascades/ProceduralPlanetGenerationLite/Runtime/ProceduralEarthLikePlanetLite.cs
+  uploadId: 850742
