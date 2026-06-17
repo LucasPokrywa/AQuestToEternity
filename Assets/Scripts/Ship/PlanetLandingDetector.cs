@@ -1,43 +1,77 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class PlanetLandingDetector : MonoBehaviour
 {
-    public string planetName = "Earth";
-    public GameObject landingText;
+    [SerializeField] private string planetName;
+
+#if UNITY_EDITOR
+    [SerializeField] private SceneAsset sceneToLoad;
+#endif
+
+    [SerializeField] private string sceneName;
+    [SerializeField] private GameObject landingText;
+    [SerializeField] private GameObject landingPanel;
 
     private bool playerIsNear = false;
 
-    void Start()
+    private void OnValidate()
     {
-        landingText.SetActive(false);
+#if UNITY_EDITOR
+        if (sceneToLoad != null)
+        {
+            sceneName = sceneToLoad.name;
+        }
+#endif
     }
 
-    void OnTriggerEnter(Collider other)
+    private void Awake()
+    {
+        if (landingText != null)
+            landingText.SetActive(false);
+            landingPanel.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerIsNear = true;
 
-            landingText.SetActive(true);
+            if (landingText != null)
+            {
+                landingText.SetActive(true);
+                landingPanel.SetActive(true);
 
-            landingText.GetComponent<Text>().text =
-                "Appuie sur E pour atterrir sur " + planetName;
+                Text textComponent = landingText.GetComponent<Text>();
+                if (textComponent != null)
+                {
+                    textComponent.text =
+                        "Appuie sur E pour atterrir sur " + planetName;
+                }
+            }
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerIsNear = false;
 
-            landingText.SetActive(false);
+            if (landingText != null)
+                landingText.SetActive(false);
+                landingPanel.SetActive(false);
         }
     }
 
-    void Update()
+    private void Update()
     {
         Keyboard keyboard = Keyboard.current;
 
@@ -46,8 +80,14 @@ public class PlanetLandingDetector : MonoBehaviour
 
         if (playerIsNear && keyboard.eKey.wasPressedThisFrame)
         {
-            landingText.GetComponent<Text>().text =
-                "Atterrissage sur " + planetName + " !";
+            if (!string.IsNullOrEmpty(sceneName))
+            {
+                SceneManager.LoadScene(sceneName);
+            }
+            else
+            {
+                Debug.LogError("Aucune scène assignée pour " + planetName);
+            }
         }
     }
 }
