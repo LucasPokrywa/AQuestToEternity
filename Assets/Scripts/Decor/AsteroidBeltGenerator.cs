@@ -13,6 +13,12 @@ public class AsteroidBeltGenerator : MonoBehaviour
 
     public float heightVariation = 80f;
 
+    public float minRotationSpeed = 0.5f; // degrés/seconde
+    public float maxRotationSpeed = 3f;
+
+    public float minOrbitSpeed = 0.02f; // degrés/seconde, très lent
+    public float maxOrbitSpeed = 0.15f;
+
     void Start()
     {
         // Récupère tous les modèles enfants
@@ -50,11 +56,17 @@ public class AsteroidBeltGenerator : MonoBehaviour
                 Random.rotation,
                 transform
             );
-            Debug.Log($"Astéroïde {i} créé à {asteroid.transform.position}, actif: {asteroid.activeInHierarchy}, scale monde: {asteroid.transform.lossyScale}");
 
             // Scale entre 0.7 et 1.5
             float scale = Random.Range(1.5f, 4.5f);
             asteroid.transform.localScale = Vector3.one * scale;
+
+            // Rotation sur lui-même, axe et sens aléatoires, vitesse très légère
+            AsteroidSelfRotation rotator = asteroid.AddComponent<AsteroidSelfRotation>();
+            Vector3 randomAxis = Random.onUnitSphere;
+            float randomSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
+            float randomOrbitSpeed = Random.Range(minOrbitSpeed, maxOrbitSpeed);
+            rotator.Init(randomAxis, randomSpeed, transform.position, randomOrbitSpeed);
         }
     }
 }
