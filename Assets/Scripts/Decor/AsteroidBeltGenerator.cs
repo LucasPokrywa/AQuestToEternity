@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class AsteroidBeltGenerator : MonoBehaviour
 {
-    public GameObject asteroidPrefab;
+    public Transform asteroids; // Groupe contenant Cube.000 à Cube.019
+
+    private GameObject[] asteroidModels;
 
     public int asteroidCount = 200;
 
@@ -11,11 +13,17 @@ public class AsteroidBeltGenerator : MonoBehaviour
 
     public float heightVariation = 80f;
 
-    public float minScale = 5f;
-    public float maxScale = 25f;
-
     void Start()
     {
+        // Récupère tous les modèles enfants
+        int count = asteroids.childCount;
+        asteroidModels = new GameObject[count];
+
+        for (int i = 0; i < count; i++)
+        {
+            asteroidModels[i] = asteroids.GetChild(i).gameObject;
+        }
+
         GenerateBelt();
     }
 
@@ -32,14 +40,20 @@ public class AsteroidBeltGenerator : MonoBehaviour
                 Mathf.Sin(angle) * radius
             );
 
+
+            // Choix aléatoire du modèle
+            GameObject prefab = asteroidModels[Random.Range(0, asteroidModels.Length)];
+
             GameObject asteroid = Instantiate(
-                asteroidPrefab,
+                prefab,
                 transform.position + position,
                 Random.rotation,
                 transform
             );
+            Debug.Log($"Astéroïde {i} créé à {asteroid.transform.position}, actif: {asteroid.activeInHierarchy}, scale monde: {asteroid.transform.lossyScale}");
 
-            float scale = Random.Range(minScale, maxScale);
+            // Scale entre 0.7 et 1.5
+            float scale = Random.Range(1.5f, 4.5f);
             asteroid.transform.localScale = Vector3.one * scale;
         }
     }

@@ -2294,7 +2294,7 @@ Transform:
   m_GameObject: {fileID: 1103660317}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1200, y: 0, z: -200}
+  m_LocalPosition: {x: 1300, y: 0, z: -200}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4304,13 +4304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff93da23903592140b60bf1ca4c42a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AsteroidBeltGenerator
-  asteroidPrefab: {fileID: 3915274759798979231, guid: e0f0caf0ae41e2f4d89fd93a3bdc1e57, type: 3}
+  asteroids: {fileID: -8679921383154817045, guid: 7b25e3641f8164c4095b2594b8eb59a4, type: 3}
   asteroidCount: 200
   innerRadius: 1900
   outerRadius: 2400
   heightVariation: 80
-  minScale: 10
-  maxScale: 40
 --- !u!4 &1971956728
 Transform:
   m_ObjectHideFlags: 0
