@@ -67,6 +67,13 @@ public class AsteroidBeltGenerator : MonoBehaviour
             float randomSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
             float randomOrbitSpeed = Random.Range(minOrbitSpeed, maxOrbitSpeed);
             rotator.Init(randomAxis, randomSpeed, transform.position, randomOrbitSpeed);
+
+            if (asteroid.GetComponent<Collider>() == null)
+            {
+                asteroid.AddComponent<MeshCollider>();
+            }
+
+            asteroid.AddComponent<AsteroidInteractable>();
         }
     }
 }
