@@ -7,8 +7,8 @@ public class PlanetApproachCamera : MonoBehaviour
 
     public Transform[] planets;
 
-    public float farFOV = 65f;
-    public float nearFOV = 45f;
+    public float farFOV = 80f;
+    public float nearFOV = 70f;
     public float smoothSpeed = 2f;
 
     void Update()
