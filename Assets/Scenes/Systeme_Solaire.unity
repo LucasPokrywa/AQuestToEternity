@@ -809,7 +809,7 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 2
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_Iso: 200
@@ -831,7 +831,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 100000
-  field of view: 90
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -857,13 +857,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 70, z: -120}
+  m_LocalRotation: {x: 0.14780942, y: 0, z: 0, w: 0.9890159}
+  m_LocalPosition: {x: 0, y: 60, z: -120}
   m_LocalScale: {x: 1, y: 3.333333, z: 0.51713336}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1103660323}
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,8 +934,8 @@ MonoBehaviour:
   - {fileID: 1262854884}
   - {fileID: 476921004}
   - {fileID: 1237745906}
-  farFOV: 100
-  nearFOV: 80
+  farFOV: 80
+  nearFOV: 60
   smoothSpeed: 2
 --- !u!1 &375421581 stripped
 GameObject:
@@ -2593,7 +2593,6 @@ MonoBehaviour:
   fireRate: 0.5
   projectileStartDistance: 20
   projectileVerticalOffset: 0
-  damage: 1
 --- !u!114 &1103660330
 MonoBehaviour:
   m_ObjectHideFlags: 0
