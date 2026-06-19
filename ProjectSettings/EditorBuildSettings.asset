@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Systeme_Solaire.unity
     guid: d80a364ef90e1f04dafd70b24d12a3d3
   - enabled: 1
-    path: Assets/Scenes/sceneMars.unity
+    path: Assets/Scenes/sceneMercure.unity
     guid: 4a97d0de69214254696217090b4bafaf
   - enabled: 1
     path: Assets/Scenes/sceneVenus.unity
