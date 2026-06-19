@@ -13,6 +13,14 @@ public class SpaceGirl : MonoBehaviour
     [SerializeField] private GameObject m_CamFPS;
     [SerializeField] private GameObject m_CamTPS;
 
+    [Header("Camera TPS - Orbite verticale")]
+    [Tooltip("Distance entre la caméra TPS et le personnage")]
+    [SerializeField] private float m_TPSDistance = 3f;
+    [Tooltip("Vitesse de lissage du mouvement de la caméra (plus haut = plus rapide/raide)")]
+    [SerializeField] private float m_TPSFollowSmoothness = 12f;
+    [Tooltip("Décalage du point visé par la caméra par rapport au pivot (Y positif = remonte le cadrage)")]
+    [SerializeField] private Vector3 m_TPSLookOffset = new Vector3(0f, 0.5f, 0f);
+
     private float m_VerticalRotation = 0f;
     private bool m_IsFirstPerson = false;
 
@@ -80,12 +88,34 @@ public class SpaceGirl : MonoBehaviour
         m_VerticalRotation -= mouseY;
         m_VerticalRotation = Mathf.Clamp(m_VerticalRotation, -60f, 60f);
 
-        // 3. Application directe sur les caméras
-        // On ne fait plus tourner le Pivot, mais les enfants du pivot
         Quaternion targetRotation = Quaternion.Euler(m_VerticalRotation, 0f, 0f);
 
+        // 3a. Cam FPS : reste à hauteur des yeux, seule la rotation locale change
         if (m_CamFPS) m_CamFPS.transform.localRotation = targetRotation;
-        if (m_CamTPS) m_CamTPS.transform.localRotation = targetRotation;
+
+        // 3b. Cam TPS : orbite verticalement autour du point visé (= le personnage + offset)
+        //     afin de toujours rester centrée sur lui, qu'on regarde en haut ou en bas
+        if (m_CamTPS && m_CameraPivot)
+        {
+            // Point réel visé par la caméra : le pivot décalé par m_TPSLookOffset
+            Vector3 lookTarget = m_CameraPivot.position + m_TPSLookOffset;
+
+            // Rotation complète = rotation horizontale du corps + rotation verticale de la souris
+            Quaternion fullRotation = m_CameraPivot.rotation * targetRotation;
+
+            // Position désirée : sur un arc de cercle autour du point visé, à distance fixe
+            Vector3 desiredPosition = lookTarget - (fullRotation * Vector3.forward * m_TPSDistance);
+
+            // Lissage du déplacement pour éviter les à-coups
+            m_CamTPS.transform.position = Vector3.Lerp(
+                m_CamTPS.transform.position,
+                desiredPosition,
+                Time.deltaTime * m_TPSFollowSmoothness
+            );
+
+            // On regarde toujours vers le même point : le personnage reste centré à l'écran
+            m_CamTPS.transform.LookAt(lookTarget);
+        }
     }
 
     void UpdateCameraStatus()
