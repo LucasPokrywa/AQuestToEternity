@@ -51,21 +51,25 @@ public class LaserShooter : MonoBehaviour
             new Vector3(0.5f, 0.5f, 0f)
         );
 
+        Debug.DrawRay(ray.origin, ray.direction * 20f, Color.red, 2f);
+
         Vector3 start =
             ray.GetPoint(laserStartDistance)
             + playerCamera.transform.up * laserVerticalOffset;
 
-        Vector3 end = ray.GetPoint(range);
+        //Vector3 end = ray.GetPoint(range);
+        Vector3 end = start + ray.direction * range;
 
         if (Physics.Raycast(ray, out RaycastHit hit, range))
         {
             end = hit.point;
 
-            Destructible target =
-                hit.collider.GetComponent<Destructible>();
+            LizardAI lizard = hit.collider.GetComponent<LizardAI>();
 
-            if (target != null)
-                target.TakeDamage(damage);
+            if (lizard != null)
+            {
+                lizard.TakeDamage(1);
+            }
         }
 
         laserLine.SetPosition(0, start);
