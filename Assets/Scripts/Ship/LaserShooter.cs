@@ -6,6 +6,7 @@ public class LaserShooter : MonoBehaviour
     public Camera playerCamera;
     public GameObject laserProjectilePrefab;
     public PlanetTargetingSystem targetingSystem;
+    public MissionManager missionManager;
 
     public float fireRate = 0.25f;
     public float projectileStartDistance = 20f;
@@ -56,6 +57,6 @@ public class LaserShooter : MonoBehaviour
         LaserProjectile laser = projectile.GetComponent<LaserProjectile>();
 
         if (laser != null)
-            laser.Init(direction, target, targetingSystem);
+            laser.Init(direction, target, targetingSystem, missionManager);
     }
 }

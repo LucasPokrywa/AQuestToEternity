@@ -8,12 +8,14 @@ public class LaserProjectile : MonoBehaviour
     private Vector3 direction;
     private Transform target;
     private PlanetTargetingSystem targetingSystem;
+    private MissionManager missionManager;
 
-    public void Init(Vector3 dir, Transform newTarget, PlanetTargetingSystem system)
+    public void Init(Vector3 dir, Transform newTarget, PlanetTargetingSystem system, MissionManager manager)
     {
         direction = dir.normalized;
         target = newTarget;
         targetingSystem = system;
+        missionManager = manager;
 
         Destroy(gameObject, lifeTime);
     }
@@ -39,6 +41,9 @@ public class LaserProjectile : MonoBehaviour
 
             if (targetingSystem != null)
                 targetingSystem.ClearTargetIf(destroyedTarget);
+
+            if (missionManager != null)
+                missionManager.DestroyAsteroid();
 
             Destroy(asteroid.gameObject);
             Destroy(gameObject);

@@ -18,6 +18,7 @@ public class PlanetLandingDetector : MonoBehaviour
     [SerializeField] private string sceneName;
     [SerializeField] private GameObject landingText;
     [SerializeField] private GameObject landingPanel;
+    [SerializeField] private MissionManager missionManager;
 
     private bool playerIsNear = false;
 
@@ -25,9 +26,7 @@ public class PlanetLandingDetector : MonoBehaviour
     {
 #if UNITY_EDITOR
         if (sceneToLoad != null)
-        {
             sceneName = sceneToLoad.name;
-        }
 #endif
     }
 
@@ -35,59 +34,66 @@ public class PlanetLandingDetector : MonoBehaviour
     {
         if (landingText != null)
             landingText.SetActive(false);
+
+        if (landingPanel != null)
             landingPanel.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
+            return;
+
+        playerIsNear = true;
+
+        if (landingText != null)
         {
-            playerIsNear = true;
+            landingText.SetActive(true);
 
-            if (landingText != null)
-            {
-                landingText.SetActive(true);
-                landingPanel.SetActive(true);
-
-                Text textComponent = landingText.GetComponent<Text>();
-                if (textComponent != null)
-                {
-                    textComponent.text =
-                        "Appuie sur E pour atterrir sur " + planetName;
-                }
-            }
+            Text textComponent = landingText.GetComponent<Text>();
+            if (textComponent != null)
+                textComponent.text = "Appuie sur E pour atterrir sur " + planetName;
         }
+
+        if (landingPanel != null)
+            landingPanel.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerIsNear = false;
+        if (!other.CompareTag("Player"))
+            return;
 
-            if (landingText != null)
-                landingText.SetActive(false);
-                landingPanel.SetActive(false);
-        }
+        playerIsNear = false;
+
+        if (landingText != null)
+            landingText.SetActive(false);
+
+        if (landingPanel != null)
+            landingPanel.SetActive(false);
     }
 
     private void Update()
     {
         Keyboard keyboard = Keyboard.current;
-
         if (keyboard == null)
             return;
 
         if (playerIsNear && keyboard.eKey.wasPressedThisFrame)
         {
+            if (missionManager != null)
+            {
+                if (planetName == "Mercure")
+                    missionManager.LandOnMercury();
+
+                if (planetName == "Venus")
+                    missionManager.LandOnVenus();
+            }
+
             if (!string.IsNullOrEmpty(sceneName))
-            {
                 SceneManager.LoadScene(sceneName);
-            }
             else
-            {
                 Debug.LogError("Aucune scène assignée pour " + planetName);
-            }
         }
     }
 }

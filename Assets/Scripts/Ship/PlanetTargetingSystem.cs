@@ -33,6 +33,10 @@ public class PlanetTargetingSystem : MonoBehaviour
     public Color planetColor = Color.white;
     public Color asteroidColor = Color.red;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip lockSound;
+
     private TargetMode currentMode = TargetMode.None;
     private Transform selectedTarget;
     private float baseCursorSize = 140f;
@@ -94,25 +98,37 @@ public class PlanetTargetingSystem : MonoBehaviour
     void EnterPlanetTargetMode()
     {
         selectedTarget = GetBestPlanetInView();
-        if (selectedTarget == null) return;
+
+        if (selectedTarget == null)
+            return;
 
         currentMode = TargetMode.Planet;
+
         ShowTargetUI();
 
         if (targetCursorImage != null)
             targetCursorImage.color = planetColor;
+
+        if (audioSource != null && lockSound != null)
+            audioSource.PlayOneShot(lockSound);
     }
 
     void EnterAsteroidTargetMode()
     {
         selectedTarget = GetBestAsteroidInView();
-        if (selectedTarget == null) return;
+
+        if (selectedTarget == null)
+            return;
 
         currentMode = TargetMode.Asteroid;
+
         ShowTargetUI();
 
         if (targetCursorImage != null)
             targetCursorImage.color = asteroidColor;
+
+        if (audioSource != null && lockSound != null)
+            audioSource.PlayOneShot(lockSound);
     }
 
     void ExitFocusMode()
@@ -133,7 +149,12 @@ public class PlanetTargetingSystem : MonoBehaviour
             best = GetNextAsteroid(direction);
 
         if (best != null)
+        {
             selectedTarget = best;
+
+            if (audioSource != null && lockSound != null)
+                audioSource.PlayOneShot(lockSound);
+        }
     }
 
     Transform GetBestPlanetInView()
@@ -164,21 +185,44 @@ public class PlanetTargetingSystem : MonoBehaviour
             FindObjectsByType<AsteroidInteractable>(FindObjectsSortMode.None);
 
         Transform best = null;
-        float bestAngle = float.MaxValue;
+        float bestScore = float.MaxValue;
 
         foreach (AsteroidInteractable asteroid in asteroids)
         {
             if (asteroid == null) continue;
 
-            float distance = Vector3.Distance(playerShip.position, asteroid.transform.position);
-            if (distance > asteroidSearchRange) continue;
+            Vector3 directionToAsteroid =
+                asteroid.transform.position - playerShip.position;
 
-            Vector3 dir = asteroid.transform.position - playerShip.position;
-            float angle = Vector3.Angle(playerShip.forward, dir);
+            float distance = directionToAsteroid.magnitude;
 
-            if (angle <= maxTargetAngle && angle < bestAngle)
+            if (distance > asteroidSearchRange)
+                continue;
+
+            float angle = Vector3.Angle(playerShip.forward, directionToAsteroid);
+
+            if (angle > maxTargetAngle)
+                continue;
+
+            Vector3 viewportPos =
+                mainCamera.WorldToViewportPoint(asteroid.transform.position);
+
+            if (viewportPos.z < 0)
+                continue;
+
+            float screenDistanceFromCenter =
+                Vector2.Distance(
+                    new Vector2(viewportPos.x, viewportPos.y),
+                    new Vector2(0.5f, 0.5f)
+                );
+
+            float score =
+                screenDistanceFromCenter * 1000f +
+                distance * 0.01f;
+
+            if (score < bestScore)
             {
-                bestAngle = angle;
+                bestScore = score;
                 best = asteroid.transform;
             }
         }
