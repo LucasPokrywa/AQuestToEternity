@@ -11,6 +11,9 @@ public class DesyncEffectManager : MonoBehaviour
     public Text gameOverText;
     public Text subtitleText;
 
+    [Header("Mission UI")]
+    public GameObject missionChecklistUI;
+
     [Header("Canvas")]
     public RectTransform canvasRoot;
 
@@ -26,6 +29,9 @@ public class DesyncEffectManager : MonoBehaviour
     void Start()
     {
         dangerLevel = 0f;
+
+        if (canvasRoot != null)
+            originalCanvasPos = canvasRoot.anchoredPosition;
 
         if (noise != null)
             noise.intensity = 0f;
@@ -53,9 +59,14 @@ public class DesyncEffectManager : MonoBehaviour
         if (noise != null)
             noise.intensity = dangerLevel;
 
+        bool isDesync = dangerLevel > 0.05f;
+
+        if (missionChecklistUI != null)
+            missionChecklistUI.SetActive(!isDesync);
+
         if (topWarningText != null)
         {
-            topWarningText.gameObject.SetActive(dangerLevel > 0.05f);
+            topWarningText.gameObject.SetActive(isDesync);
             topWarningText.text = "⚠ SIGNAL PERDU — DÉSYNCHRONISATION ⚠";
             topWarningText.color = new Color(1f, 0f, 0f, Mathf.Lerp(0.4f, 1f, dangerLevel));
         }
@@ -64,6 +75,9 @@ public class DesyncEffectManager : MonoBehaviour
     public void TriggerGameOver()
     {
         isGameOver = true;
+
+        if (missionChecklistUI != null)
+            missionChecklistUI.SetActive(false);
 
         if (noise != null)
             noise.intensity = 1f;
@@ -100,6 +114,9 @@ public class DesyncEffectManager : MonoBehaviour
             return;
 
         SetDangerLevel(0f);
+
+        if (missionChecklistUI != null)
+            missionChecklistUI.SetActive(true);
     }
 
     private void HideGameOverUI()
@@ -119,6 +136,7 @@ public class DesyncEffectManager : MonoBehaviour
         if (canvasRoot == null)
             return;
 
-        canvasRoot.anchoredPosition = originalCanvasPos + Random.insideUnitCircle * amount;
+        canvasRoot.anchoredPosition =
+            originalCanvasPos + Random.insideUnitCircle * amount;
     }
 }
