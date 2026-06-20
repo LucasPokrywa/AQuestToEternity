@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
 
 public enum QuestStatus
@@ -13,25 +12,29 @@ public enum QuestStatus
 public class Quest
 {
     public QuestData data;
-
     public QuestStatus status;
 
     public List<Objective> objectives = new();
 
-
     public bool IsCompleted() => objectives.All(o => o.IsCompleted());
 
-    public void UpdateObjective(string targetID, int amount = 1)
+    public List<Objective> UpdateObjective(ObjectiveType type, string targetID, int amount = 1)
     {
-        foreach (var obj in objectives)
-            if (obj.data.targetID == targetID && !obj.IsCompleted())
-                obj.currentAmount += amount;
-    }
-}
+        var updated = new List<Objective>();
 
-public class Objective
-{
-    public ObjectiveData data;
-    public int currentAmount;
-    public bool IsCompleted() => currentAmount >= data.requiredAmount;
+        foreach (var obj in objectives)
+        {
+            if (obj.IsCompleted())
+                continue;
+
+            if (obj.data.type == type &&
+                obj.data.targetID == targetID)
+            {
+                obj.currentAmount += amount;
+                updated.Add(obj);
+            }
+        }
+
+        return updated;
+    }
 }

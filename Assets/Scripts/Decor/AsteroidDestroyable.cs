@@ -39,8 +39,9 @@ public class AsteroidDestroyer : MonoBehaviour
 
         if (currentTarget != null && ePressed)
         {
-            if (missionManager != null)
-                missionManager.CollectAsteroid();
+
+
+            QuestManager.Instance.ReportEvent(ObjectiveType.Collect, "asteroides");
 
             Destroy(currentTarget.gameObject);
 
