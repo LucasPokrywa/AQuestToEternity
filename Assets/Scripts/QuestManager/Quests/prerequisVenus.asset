@@ -18,14 +18,13 @@ MonoBehaviour:
   - description: Collecter des asterioids
     type: 1
     targetID: asteroides
-    requiredAmount: 10
+    requiredAmount: 20
   - description: "Detruire des ast\xE9roides"
     type: 0
     targetID: asteroides
-    requiredAmount: 20
+    requiredAmount: 12
   - description: Tuer des ennemies
     type: 0
     targetID: lezard
     requiredAmount: 15
   prerequisites: []
-  rewardXP: 0
