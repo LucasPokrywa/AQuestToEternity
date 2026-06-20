@@ -148,8 +148,8 @@ public class MonsterManager : MonoBehaviour
                         }
 
                         GameObject go = Instantiate(monsterType.prefab, pos, Quaternion.identity);
-                        go.SetActive(true); // make sure Awake/OnEnable have run
-                        Debug.Log($"Spawn du monstre : {pos}");
+                        go.SetActive(true); 
+
                         Monster monster = go.GetComponent<Monster>();
                         monster.monsterId = System.Guid.NewGuid().ToString();
                         monster.sourcePrefab = monsterType.prefab;
