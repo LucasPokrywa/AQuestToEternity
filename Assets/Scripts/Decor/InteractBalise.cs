@@ -8,6 +8,7 @@ public class InteractBalise : MonoBehaviour
 
     [Header("UI")]
     public GameObject pressEText;
+    public GameObject prerequisText;
 
     [Header("Teleport (coordinates)")]
     public Transform playerToTeleport;
@@ -15,6 +16,9 @@ public class InteractBalise : MonoBehaviour
 
     private Transform playerCam;
     private bool hasInteracted = false;
+
+    public QuestData missionRequise;
+
 
     void Start()
     {
@@ -37,12 +41,20 @@ public class InteractBalise : MonoBehaviour
 
         if (distance <= interactionDistance)
         {
+            if (!QuestManager.Instance.IsQuestCompleted(missionRequise))
+            {
+                if (prerequisText != null)
+                    prerequisText.SetActive(true);
+                return;
+            }
+
+
             if (pressEText != null)
                 pressEText.SetActive(true);
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (true)
+                if (QuestManager.Instance.IsQuestCompleted(missionRequise))
                 {
                     Interact();
                 }
@@ -52,11 +64,15 @@ public class InteractBalise : MonoBehaviour
         {
             if (pressEText != null)
                 pressEText.SetActive(false);
+            if (prerequisText != null)
+                prerequisText.SetActive(false);
         }
     }
 
     void Interact()
     {
+
+
         hasInteracted = true;
 
         if (pressEText != null)
@@ -75,6 +91,9 @@ public class InteractBalise : MonoBehaviour
                 teleportPosition.z
             );
         }
+
+
+        QuestManager.Instance.ReportEvent(ObjectiveType.TalkTo, "balise");
 
         gameObject.SetActive(false);
     }

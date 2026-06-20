@@ -4,38 +4,49 @@ using UnityEngine.UI;
 
 public class PlanetTargetingSystem : MonoBehaviour
 {
+    public enum TargetMode
+    {
+        None,
+        Planet,
+        Asteroid
+    }
+
     [Header("References")]
     public Transform playerShip;
     public Camera mainCamera;
     public RectTransform targetCursor;
+    public Image targetCursorImage;
     public Text targetInfoText;
     public CanvasGroup targetInfoGroup;
-    public AudioSource audioSource;
-    public AudioClip lockSound;
 
     [Header("Planets")]
     public Transform[] planets;
 
     [Header("Settings")]
     public float maxTargetAngle = 60f;
+    public float asteroidSearchRange = 3000f;
     public float focusRotationSpeed = 2f;
     public float cursorPulseSpeed = 5f;
     public float cursorPulseAmount = 12f;
 
-    private bool focusMode = false;
-    private Transform selectedPlanet;
+    [Header("Colors")]
+    public Color planetColor = Color.white;
+    public Color asteroidColor = Color.red;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip lockSound;
+
+    private TargetMode currentMode = TargetMode.None;
+    private Transform selectedTarget;
     private float baseCursorSize = 140f;
 
     void Start()
     {
-        if (targetCursor != null)
-            targetCursor.gameObject.SetActive(false);
+        if (targetCursorImage == null && targetCursor != null)
+            targetCursorImage = targetCursor.GetComponent<Image>();
 
-        if (targetInfoText != null)
-            targetInfoText.gameObject.SetActive(false);
-
-        if (targetInfoGroup != null)
-            targetInfoGroup.alpha = 0f;
+        HideTargetUI();
     }
 
     void Update()
@@ -43,44 +54,78 @@ public class PlanetTargetingSystem : MonoBehaviour
         Keyboard keyboard = Keyboard.current;
         if (keyboard == null) return;
 
-        // Toggle focus
         if (keyboard.tKey.wasPressedThisFrame)
         {
-            if (focusMode)
+            if (currentMode == TargetMode.Planet)
                 ExitFocusMode();
             else
-                EnterFocusMode();
+                EnterPlanetTargetMode();
         }
 
-        if (!focusMode || selectedPlanet == null)
+        if (keyboard.rKey.wasPressedThisFrame)
+        {
+            if (currentMode == TargetMode.Asteroid)
+                ExitFocusMode();
+            else
+                EnterAsteroidTargetMode();
+        }
+
+        if (currentMode != TargetMode.None && selectedTarget != null)
+        {
+            if (keyboard.leftArrowKey.wasPressedThisFrame)
+                SwitchTarget(-1);
+
+            if (keyboard.rightArrowKey.wasPressedThisFrame)
+                SwitchTarget(1);
+
+            FocusCurrentTarget();
+            UpdateCursor();
+            UpdateTargetInfo();
+        }
+
+        if (currentMode != TargetMode.None && selectedTarget == null)
+        {
+            ExitFocusMode();
             return;
-
-        // Switch gauche / droite
-        if (keyboard.leftArrowKey.wasPressedThisFrame)
-            SwitchTarget(-1);
-
-        if (keyboard.rightArrowKey.wasPressedThisFrame)
-            SwitchTarget(1);
-
-        FocusCurrentTarget();
-        UpdateCursor();
-        UpdateTargetInfo();
+        }
     }
 
-    void EnterFocusMode()
+    public Transform GetSelectedTarget()
     {
-        selectedPlanet = GetBestPlanetInView();
+        return selectedTarget;
+    }
 
-        if (selectedPlanet == null)
+    void EnterPlanetTargetMode()
+    {
+        selectedTarget = GetBestPlanetInView();
+
+        if (selectedTarget == null)
             return;
 
-        focusMode = true;
+        currentMode = TargetMode.Planet;
 
-        if (targetCursor != null)
-            targetCursor.gameObject.SetActive(true);
+        ShowTargetUI();
 
-        if (targetInfoText != null)
-            targetInfoText.gameObject.SetActive(true);
+        if (targetCursorImage != null)
+            targetCursorImage.color = planetColor;
+
+        if (audioSource != null && lockSound != null)
+            audioSource.PlayOneShot(lockSound);
+    }
+
+    void EnterAsteroidTargetMode()
+    {
+        selectedTarget = GetBestAsteroidInView();
+
+        if (selectedTarget == null)
+            return;
+
+        currentMode = TargetMode.Asteroid;
+
+        ShowTargetUI();
+
+        if (targetCursorImage != null)
+            targetCursorImage.color = asteroidColor;
 
         if (audioSource != null && lockSound != null)
             audioSource.PlayOneShot(lockSound);
@@ -88,17 +133,28 @@ public class PlanetTargetingSystem : MonoBehaviour
 
     void ExitFocusMode()
     {
-        focusMode = false;
-        selectedPlanet = null;
+        currentMode = TargetMode.None;
+        selectedTarget = null;
+        HideTargetUI();
+    }
 
-        if (targetCursor != null)
-            targetCursor.gameObject.SetActive(false);
+    void SwitchTarget(int direction)
+    {
+        Transform best = null;
 
-        if (targetInfoText != null)
-            targetInfoText.gameObject.SetActive(false);
+        if (currentMode == TargetMode.Planet)
+            best = GetNextPlanet(direction);
 
-        if (targetInfoGroup != null)
-            targetInfoGroup.alpha = 0f;
+        if (currentMode == TargetMode.Asteroid)
+            best = GetNextAsteroid(direction);
+
+        if (best != null)
+        {
+            selectedTarget = best;
+
+            if (audioSource != null && lockSound != null)
+                audioSource.PlayOneShot(lockSound);
+        }
     }
 
     Transform GetBestPlanetInView()
@@ -113,10 +169,7 @@ public class PlanetTargetingSystem : MonoBehaviour
             Vector3 dir = planet.position - playerShip.position;
             float angle = Vector3.Angle(playerShip.forward, dir);
 
-            if (angle > maxTargetAngle)
-                continue;
-
-            if (angle < bestAngle)
+            if (angle <= maxTargetAngle && angle < bestAngle)
             {
                 bestAngle = angle;
                 best = planet;
@@ -126,23 +179,97 @@ public class PlanetTargetingSystem : MonoBehaviour
         return best;
     }
 
-    void SwitchTarget(int direction)
+    Transform GetBestAsteroidInView()
     {
-        if (selectedPlanet == null) return;
+        AsteroidInteractable[] asteroids =
+            FindObjectsByType<AsteroidInteractable>(FindObjectsSortMode.None);
 
-        Vector3 currentScreen = mainCamera.WorldToScreenPoint(selectedPlanet.position);
-
-        Transform bestPlanet = null;
+        Transform best = null;
         float bestScore = float.MaxValue;
 
-        foreach (Transform planet in planets)
+        foreach (AsteroidInteractable asteroid in asteroids)
         {
-            if (planet == null || planet == selectedPlanet)
+            if (asteroid == null) continue;
+
+            Vector3 directionToAsteroid =
+                asteroid.transform.position - playerShip.position;
+
+            float distance = directionToAsteroid.magnitude;
+
+            if (distance > asteroidSearchRange)
                 continue;
 
-            Vector3 screen = mainCamera.WorldToScreenPoint(planet.position);
+            float angle = Vector3.Angle(playerShip.forward, directionToAsteroid);
+
+            if (angle > maxTargetAngle)
+                continue;
+
+            Vector3 viewportPos =
+                mainCamera.WorldToViewportPoint(asteroid.transform.position);
+
+            if (viewportPos.z < 0)
+                continue;
+
+            float screenDistanceFromCenter =
+                Vector2.Distance(
+                    new Vector2(viewportPos.x, viewportPos.y),
+                    new Vector2(0.5f, 0.5f)
+                );
+
+            float score =
+                screenDistanceFromCenter * 1000f +
+                distance * 0.01f;
+
+            if (score < bestScore)
+            {
+                bestScore = score;
+                best = asteroid.transform;
+            }
+        }
+
+        return best;
+    }
+
+    Transform GetNextPlanet(int direction)
+    {
+        return GetNextFromList(planets, direction);
+    }
+
+    Transform GetNextAsteroid(int direction)
+    {
+        AsteroidInteractable[] asteroidComponents =
+            FindObjectsByType<AsteroidInteractable>(FindObjectsSortMode.None);
+
+        Transform[] asteroidTransforms = new Transform[asteroidComponents.Length];
+
+        for (int i = 0; i < asteroidComponents.Length; i++)
+            asteroidTransforms[i] = asteroidComponents[i].transform;
+
+        return GetNextFromList(asteroidTransforms, direction);
+    }
+
+    Transform GetNextFromList(Transform[] targets, int direction)
+    {
+        if (selectedTarget == null || targets == null || targets.Length == 0)
+            return null;
+
+        Vector3 currentScreen = mainCamera.WorldToScreenPoint(selectedTarget.position);
+
+        Transform bestTarget = null;
+        float bestScore = float.MaxValue;
+
+        foreach (Transform target in targets)
+        {
+            if (target == null || target == selectedTarget)
+                continue;
+
+            Vector3 screen = mainCamera.WorldToScreenPoint(target.position);
 
             if (screen.z < 0)
+                continue;
+
+            float distance = Vector3.Distance(playerShip.position, target.position);
+            if (currentMode == TargetMode.Asteroid && distance > asteroidSearchRange)
                 continue;
 
             float deltaX = screen.x - currentScreen.x;
@@ -154,30 +281,23 @@ public class PlanetTargetingSystem : MonoBehaviour
                 continue;
 
             float deltaY = Mathf.Abs(screen.y - currentScreen.y);
-            float score = Mathf.Abs(deltaX) + deltaY * 0.5f;
+
+            float score = Mathf.Abs(deltaX) + deltaY * 0.5f + distance * 0.001f;
 
             if (score < bestScore)
             {
                 bestScore = score;
-                bestPlanet = planet;
+                bestTarget = target;
             }
         }
 
-        if (bestPlanet != null)
-        {
-            selectedPlanet = bestPlanet;
-
-            if (audioSource != null && lockSound != null)
-                audioSource.PlayOneShot(lockSound);
-        }
+        return bestTarget;
     }
 
     void FocusCurrentTarget()
     {
-        Vector3 direction = selectedPlanet.position - playerShip.position;
-
-        if (direction == Vector3.zero)
-            return;
+        Vector3 direction = selectedTarget.position - playerShip.position;
+        if (direction == Vector3.zero) return;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
 
@@ -190,72 +310,69 @@ public class PlanetTargetingSystem : MonoBehaviour
 
     void UpdateCursor()
     {
-        Vector3 viewportPos = mainCamera.WorldToViewportPoint(selectedPlanet.position);
+        Vector3 viewportPos = mainCamera.WorldToViewportPoint(selectedTarget.position);
 
-        bool behind = viewportPos.z < 0;
-
-        if (behind)
-        {
-            viewportPos.x = 1f - viewportPos.x;
-            viewportPos.y = 1f - viewportPos.y;
-        }
+        if (viewportPos.z < 0)
+            return;
 
         viewportPos.x = Mathf.Clamp(viewportPos.x, 0.08f, 0.92f);
         viewportPos.y = Mathf.Clamp(viewportPos.y, 0.08f, 0.92f);
 
-        Vector2 screenPos = new Vector2(
+        targetCursor.position = new Vector2(
             viewportPos.x * Screen.width,
             viewportPos.y * Screen.height
         );
 
-        float distance = Vector3.Distance(playerShip.position, selectedPlanet.position);
-
-        float planetSize = Mathf.Max(
-            selectedPlanet.localScale.x,
-            selectedPlanet.localScale.y,
-            selectedPlanet.localScale.z
-        );
-
-        baseCursorSize = 140f;
-
-        if (!behind && distance < planetSize * 25f)
-        {
-            Vector3 center = mainCamera.WorldToScreenPoint(selectedPlanet.position);
-
-            Vector3 edge = mainCamera.WorldToScreenPoint(
-                selectedPlanet.position + mainCamera.transform.up * planetSize * 0.5f
-            );
-
-            float radius = Vector2.Distance(
-                new Vector2(center.x, center.y),
-                new Vector2(edge.x, edge.y)
-            );
-
-            baseCursorSize = Mathf.Clamp(radius * 2.2f, 90f, 180f);
-        }
-
         float pulse = Mathf.Sin(Time.time * cursorPulseSpeed) * cursorPulseAmount;
         float finalSize = baseCursorSize + pulse;
 
-        targetCursor.gameObject.SetActive(true);
-        targetCursor.position = screenPos;
         targetCursor.sizeDelta = new Vector2(finalSize, finalSize);
     }
 
     void UpdateTargetInfo()
     {
-        if (targetInfoText == null || selectedPlanet == null)
+        if (targetInfoText == null || selectedTarget == null)
             return;
 
-        float distance = Vector3.Distance(playerShip.position, selectedPlanet.position);
+        float distance = Vector3.Distance(playerShip.position, selectedTarget.position);
 
-        string display = Mathf.RoundToInt(distance) + " u";
+        string type = currentMode == TargetMode.Asteroid ? "ASTÉROÏDE" : "PLANÈTE";
 
         targetInfoText.text =
-            selectedPlanet.name +
-            "\nDistance : " + display;
+            type + "\n" +
+            selectedTarget.name +
+            "\nDistance : " + Mathf.RoundToInt(distance) + " u";
 
         if (targetInfoGroup != null)
             targetInfoGroup.alpha = Mathf.Lerp(targetInfoGroup.alpha, 1f, Time.deltaTime * 5f);
+    }
+
+    void ShowTargetUI()
+    {
+        if (targetCursor != null)
+            targetCursor.gameObject.SetActive(true);
+
+        if (targetInfoText != null)
+            targetInfoText.gameObject.SetActive(true);
+    }
+
+    void HideTargetUI()
+    {
+        if (targetCursor != null)
+            targetCursor.gameObject.SetActive(false);
+
+        if (targetInfoText != null)
+            targetInfoText.gameObject.SetActive(false);
+
+        if (targetInfoGroup != null)
+            targetInfoGroup.alpha = 0f;
+    }
+
+    public void ClearTargetIf(Transform target)
+    {
+        if (selectedTarget == target)
+        {
+            ExitFocusMode();
+        }
     }
 }
