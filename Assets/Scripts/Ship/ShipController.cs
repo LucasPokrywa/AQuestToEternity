@@ -8,6 +8,10 @@ public class ShipController : MonoBehaviour
     public float rotationSpeed = 70f;
     public float verticalSpeed = 50f;
 
+    [Header("Planet Blocking Triggers")]
+    public Collider[] blockingTriggers;
+    public float shipRadius = 1f;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -17,7 +21,6 @@ public class ShipController : MonoBehaviour
     void Update()
     {
         Keyboard keyboard = Keyboard.current;
-
         if (keyboard == null)
             return;
 
@@ -25,40 +28,55 @@ public class ShipController : MonoBehaviour
         float turn = 0f;
         float moveUp = 0f;
 
-        // Avancer / Reculer
         if (keyboard.zKey.isPressed || keyboard.wKey.isPressed)
             moveForward = 1f;
 
         if (keyboard.sKey.isPressed)
             moveForward = -1f;
 
-        // Rotation gauche / droite
         if (keyboard.qKey.isPressed || keyboard.aKey.isPressed)
             turn = -1f;
 
         if (keyboard.dKey.isPressed)
             turn = 1f;
 
-        // Monter / Descendre
         if (keyboard.spaceKey.isPressed)
             moveUp = 1f;
 
         if (keyboard.leftCtrlKey.isPressed)
             moveUp = -1f;
 
-        // Déplacement
-        transform.Translate(
-            Vector3.forward * moveForward * moveSpeed * Time.deltaTime
-        );
+        transform.Rotate(Vector3.up * turn * rotationSpeed * Time.deltaTime);
 
-        // Rotation
-        transform.Rotate(
-            Vector3.up * turn * rotationSpeed * Time.deltaTime
-        );
+        Vector3 movement =
+            transform.forward * moveForward * moveSpeed * Time.deltaTime +
+            transform.up * moveUp * verticalSpeed * Time.deltaTime;
 
-        // Vertical
-        transform.Translate(
-            Vector3.up * moveUp * verticalSpeed * Time.deltaTime
-        );
+        Vector3 nextPosition = transform.position + movement;
+
+        if (!WouldEnterBlockingTrigger(nextPosition))
+        {
+            transform.position = nextPosition;
+        }
+    }
+
+    private bool WouldEnterBlockingTrigger(Vector3 nextPosition)
+    {
+        foreach (Collider trigger in blockingTriggers)
+        {
+            if (trigger == null)
+                continue;
+
+            Vector3 closestPoint = trigger.ClosestPoint(nextPosition);
+
+            float distance = Vector3.Distance(nextPosition, closestPoint);
+
+            if (distance < shipRadius)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

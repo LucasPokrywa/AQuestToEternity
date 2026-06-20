@@ -19,6 +19,12 @@ namespace ParallelCascades.ProceduralPlanetGenerationLite.Editor
 
         private void CreateGUI()
         {
+            if (m_UXMLDocument == null)
+            {
+                Debug.LogWarning("WelcomeWindow: aucun fichier UXML assigné.");
+                return;
+            }
+
             m_UXMLDocument.CloneTree(rootVisualElement);
         }
     }

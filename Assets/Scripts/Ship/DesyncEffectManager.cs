@@ -10,7 +10,6 @@ public class DesyncEffectManager : MonoBehaviour
     public Text topWarningText;
     public Text gameOverText;
     public Text subtitleText;
-    public Text bottomRightText;
 
     [Header("Canvas")]
     public RectTransform canvasRoot;
@@ -87,12 +86,6 @@ public class DesyncEffectManager : MonoBehaviour
             subtitleText.text = "VOUS AVEZ ÉTÉ DÉCONNECTÉ DU RÉSEAU";
         }
 
-        if (bottomRightText != null)
-        {
-            bottomRightText.gameObject.SetActive(true);
-            bottomRightText.text = "STATUT: CRITIQUE\nCONNEXION: PERDUE\nRETOUR AU MENU...";
-        }
-
         if (playerObject != null)
         {
             ShipController ship = playerObject.GetComponent<ShipController>();
@@ -119,9 +112,6 @@ public class DesyncEffectManager : MonoBehaviour
 
         if (subtitleText != null)
             subtitleText.gameObject.SetActive(false);
-
-        if (bottomRightText != null)
-            bottomRightText.gameObject.SetActive(false);
     }
 
     private void ShakeUI(float amount)
