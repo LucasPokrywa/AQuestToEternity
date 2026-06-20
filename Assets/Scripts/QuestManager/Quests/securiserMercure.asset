@@ -10,14 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45a41a2ad6692e549b5463f562f1e71c, type: 3}
-  m_Name: coloniserVenus
+  m_Name: securiserMercure
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questName: "Colonisez V\xE9nus"
-  description: "Activez la balise pour coloniser V\xE9nus"
+  questName: "S\xE9curiser Mercure"
+  description: Eliminez tous les ennemies de Mercure
   objectives:
-  - description: Activez la balise
-    type: 2
-    targetID: balise
-    requiredAmount: 1
+  - description: Tuer des lezards
+    type: 0
+    targetID: lezard
+    requiredAmount: 30
+  - description: Tuer des golems
+    type: 0
+    targetID: golem
+    requiredAmount: 5
   prerequisites:
-  - {fileID: 11400000, guid: 1f5799ce3307f4c429435d4211f16b57, type: 2}
+  - {fileID: 11400000, guid: 1de7dcecbd60958479032be8d8b8a933, type: 2}
