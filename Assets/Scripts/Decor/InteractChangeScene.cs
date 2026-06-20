@@ -21,6 +21,10 @@ public class InteractChangeScene : MonoBehaviour
 #endif
     private string sceneToLoad;
 
+    [Header("Mission Requise")]
+    public QuestData missionRequiseVaisseau;
+
+
     void Start()
     {
         if (playerCamera == null)
@@ -37,19 +41,22 @@ public class InteractChangeScene : MonoBehaviour
 
     void Update()
     {
-        float distance = Vector3.Distance(playerCamera.position, transform.position);
-        bool isNear = distance <= activationDistance;
-
-        if (promptText != null)
+        if (QuestManager.Instance.IsQuestCompleted(missionRequiseVaisseau))
         {
-            promptText.gameObject.SetActive(isNear);
-            promptText.text = "E pour embarquer";
+            float distance = Vector3.Distance(playerCamera.position, transform.position);
+            bool isNear = distance <= activationDistance;
+            if (promptText != null)
+            {
+                promptText.gameObject.SetActive(isNear);
+                promptText.text = "E pour embarquer";
+            }
+
+            if (isNear && Input.GetKeyDown(KeyCode.E))
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
         }
 
-        if (isNear && Input.GetKeyDown(KeyCode.E))
-        {
-            SceneManager.LoadScene(sceneToLoad);
-        }
     }
 
 #if UNITY_EDITOR
