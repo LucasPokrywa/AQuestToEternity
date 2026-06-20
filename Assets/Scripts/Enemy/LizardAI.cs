@@ -120,6 +120,9 @@ public class LizardAI : MonoBehaviour
 
         animator.SetTrigger("Die");
 
+
+        QuestManager.Instance.ReportEvent(ObjectiveType.Kill, "lezard");
+
         Destroy(gameObject, 5f);
     }
 

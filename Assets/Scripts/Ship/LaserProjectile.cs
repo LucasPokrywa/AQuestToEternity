@@ -42,8 +42,7 @@ public class LaserProjectile : MonoBehaviour
             if (targetingSystem != null)
                 targetingSystem.ClearTargetIf(destroyedTarget);
 
-            if (missionManager != null)
-                missionManager.DestroyAsteroid();
+            QuestManager.Instance.ReportEvent(ObjectiveType.Kill, "asteroides");
 
             Destroy(asteroid.gameObject);
             Destroy(gameObject);

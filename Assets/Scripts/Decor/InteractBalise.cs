@@ -16,6 +16,8 @@ public class InteractBalise : MonoBehaviour
     private Transform playerCam;
     private bool hasInteracted = false;
 
+    public QuestData missionRequise;
+
     void Start()
     {
         Camera activeCam = GetActiveCamera();
@@ -42,7 +44,7 @@ public class InteractBalise : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (true)
+                if (QuestManager.Instance.IsQuestCompleted(missionRequise))
                 {
                     Interact();
                 }
@@ -57,6 +59,8 @@ public class InteractBalise : MonoBehaviour
 
     void Interact()
     {
+
+
         hasInteracted = true;
 
         if (pressEText != null)
@@ -75,6 +79,9 @@ public class InteractBalise : MonoBehaviour
                 teleportPosition.z
             );
         }
+
+
+        QuestManager.Instance.ReportEvent(ObjectiveType.TalkTo, "balise");
 
         gameObject.SetActive(false);
     }

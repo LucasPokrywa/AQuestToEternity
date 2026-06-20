@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a41a2ad6692e549b5463f562f1e71c, type: 3}
+  m_Name: prerequisVenus
+  m_EditorClassIdentifier: Assembly-CSharp::QuestData
+  questName: Prerequis Mercure
+  description: egeg
+  objectives:
+  - description: Collecter des asterioids
+    type: 1
+    targetID: asteroides
+    requiredAmount: 10
+  - description: "Detruire des ast\xE9roides"
+    type: 0
+    targetID: asteroides
+    requiredAmount: 20
+  - description: Tuer des ennemies
+    type: 0
+    targetID: lezard
+    requiredAmount: 15
+  prerequisites: []
+  rewardXP: 0
