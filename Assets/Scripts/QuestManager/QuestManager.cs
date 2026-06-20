@@ -169,4 +169,9 @@ public class QuestManager : MonoBehaviour
 
         TryStartAvailableQuests();
     }
+
+    public bool AreAllQuestsCompleted()
+    {
+        return allQuests.All(q => completedQuests.Contains(q));
+    }
 }
