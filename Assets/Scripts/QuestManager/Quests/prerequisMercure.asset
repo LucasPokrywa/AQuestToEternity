@@ -23,9 +23,13 @@ MonoBehaviour:
     type: 0
     targetID: asteroides
     requiredAmount: 20
-  - description: Tuer des ennemies
+  - description: Tuer des lezards
     type: 0
     targetID: lezard
     requiredAmount: 15
+  - description: Tuer des golems
+    type: 0
+    targetID: golem
+    requiredAmount: 5
   prerequisites:
   - {fileID: 11400000, guid: b1cf843e3df34c645bb2f58befd0ad7f, type: 2}

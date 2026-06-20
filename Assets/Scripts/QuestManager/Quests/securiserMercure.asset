@@ -10,20 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45a41a2ad6692e549b5463f562f1e71c, type: 3}
-  m_Name: prerequisVenus
+  m_Name: securiserMercure
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questName: "Pr\xE9requis V\xE9nus"
-  description: "R\xE9alisez les pr\xE9requis pour coloniser V\xE9nus"
+  questName: "S\xE9curiser Mercure"
+  description: Eliminez tous les ennemies de Mercure
   objectives:
-  - description: Collecter des asterioids
-    type: 1
-    targetID: asteroides
-    requiredAmount: 20
-  - description: "Detruire des ast\xE9roides"
-    type: 0
-    targetID: asteroides
-    requiredAmount: 12
-  - description: Tuer des ennemies
+  - description: Tuer des lezards
     type: 0
     targetID: lezard
     requiredAmount: 30
@@ -31,4 +23,5 @@ MonoBehaviour:
     type: 0
     targetID: golem
     requiredAmount: 5
-  prerequisites: []
+  prerequisites:
+  - {fileID: 11400000, guid: 1de7dcecbd60958479032be8d8b8a933, type: 2}

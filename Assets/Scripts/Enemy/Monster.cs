@@ -2,8 +2,11 @@
 
 public class Monster : MonoBehaviour
 {
+
     [System.NonSerialized]
     public string monsterId;
+
+    public GameObject sourcePrefab;
 
     private void Awake()
     {
@@ -16,7 +19,6 @@ public class Monster : MonoBehaviour
         if (MonsterManager.Instance != null)
         {
             MonsterManager.Instance.SaveMonster(this);
-            
         }
     }
 }

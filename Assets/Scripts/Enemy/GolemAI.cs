@@ -174,6 +174,8 @@ public class GolemAI : MonoBehaviour // NOM DE LA CLASSE CORRIGÉ ICI
         // Déclenche l'animation de mort
         anim.SetTrigger("Die");
 
+        QuestManager.Instance.ReportEvent(ObjectiveType.Kill, "golem");
+
         // Optionnel : Détruire l'objet après un certain temps
         Destroy(gameObject, 5f);
     }
