@@ -59,10 +59,9 @@ public class QuestUI : MonoBehaviour
 
         foreach (var quest in QuestManager.Instance.ActiveQuests)
         {
-            sb.AppendLine("🎯 " + quest.data.questName);
-            sb.AppendLine(quest.data.description);
-
-            sb.AppendLine("--------------------");
+            sb.AppendLine(quest.data.questName);
+            sb.AppendLine($"<size=22>{quest.data.description}</size>");
+            sb.AppendLine("──────────────────────────────────────────");
 
             foreach (var obj in quest.objectives)
             {
