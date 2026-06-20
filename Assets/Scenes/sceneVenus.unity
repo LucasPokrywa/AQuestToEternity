@@ -3702,6 +3702,7 @@ MonoBehaviour:
   activationDistance: 50
   promptText: {fileID: 829643140}
   sceneToLoadAsset: {fileID: 102900000, guid: d80a364ef90e1f04dafd70b24d12a3d3, type: 3}
+  missionRequiseVaisseau: {fileID: 11400000, guid: b1cf843e3df34c645bb2f58befd0ad7f, type: 2}
 --- !u!1 &1115392134
 GameObject:
   m_ObjectHideFlags: 0

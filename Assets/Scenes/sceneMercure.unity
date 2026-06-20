@@ -2529,6 +2529,7 @@ MonoBehaviour:
   activationDistance: 50
   promptText: {fileID: 137765895}
   sceneToLoadAsset: {fileID: 102900000, guid: d80a364ef90e1f04dafd70b24d12a3d3, type: 3}
+  missionRequiseVaisseau: {fileID: 11400000, guid: 56ec9a9b6b4b03249bc2fc3ffc485949, type: 2}
 --- !u!65 &921628985
 BoxCollider:
   m_ObjectHideFlags: 0
