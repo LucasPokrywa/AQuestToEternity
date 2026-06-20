@@ -39,6 +39,8 @@ public class SpaceGirl : MonoBehaviour
     Animator m_Animator;
     bool m_IsGrounded = true;
 
+    private bool isJump = false;
+
     private void Awake()
     {
         m_Rb = GetComponent<Rigidbody>();
@@ -72,6 +74,7 @@ public class SpaceGirl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && m_IsGrounded)
         {
+            isJump = true;
             m_Rb.AddForce(Vector3.up * m_JumpForce, ForceMode.Impulse);
             m_IsGrounded = false;
         }
