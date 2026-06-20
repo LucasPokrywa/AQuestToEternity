@@ -2217,6 +2217,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 10
+  healthBar: {fileID: 0}
+  fillImage: {fileID: 0}
+  deathCanvas: {fileID: 0}
+  delayBeforeDeathScreen: 2
 --- !u!114 &983765656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2324,7 +2328,7 @@ MonoBehaviour:
   m_TPSDistance: 3
   m_TPSFollowSmoothness: 12
   m_TPSLookOffset: {x: 0, y: 3, z: -0.75}
-  m_BallPrefab: {fileID: 5069237008880303043, guid: 73fec82cb400fcf4490cf58909f4cd1a, type: 3}
+  m_BallPrefab: {fileID: 5069237008880303043, guid: cbc78017eae99d44aba67f70be6feee0, type: 3}
   m_BallSpawnPos: {fileID: 1995311817}
   m_BallShootSpeed: 20
   m_MissileRotationOffset: {x: 0, y: 0, z: 0}

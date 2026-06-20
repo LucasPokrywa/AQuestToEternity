@@ -1,6 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator))]
 public class LizardAI : MonoBehaviour
 {
     [Header("Target")]
@@ -29,6 +31,13 @@ public class LizardAI : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+
+        if (agent == null)
+        {
+            Debug.LogError($"{name}: aucun NavMeshAgent trouvÃ©. Le script LizardAI est dÃ©sactivÃ©.", this);
+            enabled = false;
+            return;
+        }
 
         currentHealth = maxHealth;
 
@@ -67,22 +76,27 @@ public class LizardAI : MonoBehaviour
 
     void Idle()
     {
-        agent.isStopped = true;
-        animator.SetFloat("Speed", 0f); // Correspond au paramètre Float de ton Animator
-        animator.SetBool("InBattle", false); // Correspond au paramètre Bool de ton Animator
+        if (agent.isOnNavMesh)
+            agent.isStopped = true;
+        animator.SetFloat("Speed", 0f); // Correspond au paramï¿½tre Float de ton Animator
+        animator.SetBool("InBattle", false); // Correspond au paramï¿½tre Bool de ton Animator
     }
 
     void Chase()
     {
-        agent.isStopped = false;
-        agent.SetDestination(player.position);
-        animator.SetFloat("Speed", 1f); // Modifie la valeur selon ce qui déclenche ta transition vers "run"
+        if (agent.isOnNavMesh)
+        {
+            agent.isStopped = false;
+            agent.SetDestination(player.position);
+        }
+        animator.SetFloat("Speed", 1f); // Modifie la valeur selon ce qui dï¿½clenche ta transition vers "run"
         animator.SetBool("InBattle", false);
     }
 
     void Attack()
     {
-        agent.isStopped = true;
+        if (agent.isOnNavMesh)
+            agent.isStopped = true;
         transform.LookAt(new Vector3(player.position.x, transform.position.y, player.position.z));
 
         animator.SetFloat("Speed", 0f);
@@ -115,7 +129,9 @@ public class LizardAI : MonoBehaviour
     {
         isDead = true;
 
-        agent.isStopped = true;
+        if (agent.isOnNavMesh)
+            agent.isStopped = true;
+
         agent.enabled = false;
 
         animator.SetTrigger("Die");
@@ -126,7 +142,7 @@ public class LizardAI : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    // Cette méthode sera appelée par une Animation Event
+    // Cette mï¿½thode sera appelï¿½e par une Animation Event
     public void DealDamage()
     {
         if (player == null)
