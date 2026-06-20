@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public class LizardAI : MonoBehaviour
 {
     [Header("Target")]
@@ -20,10 +21,14 @@ public class LizardAI : MonoBehaviour
     [SerializeField] private float attackCooldown = 1.2f;
     [SerializeField] private int damage = 10;
 
+    [Header("Audio SFX")]
+    [SerializeField] private AudioClip attackSound;
+
     private float nextAttackTime;
 
     private Animator animator;
     private NavMeshAgent agent;
+    private AudioSource audioSource;
 
     private bool isDead;
 
@@ -31,6 +36,7 @@ public class LizardAI : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
 
         if (agent == null)
         {
@@ -106,6 +112,11 @@ public class LizardAI : MonoBehaviour
 
         nextAttackTime = Time.time + attackCooldown;
 
+        if (attackSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(attackSound);
+        }
+
         if (Random.value > 0.5f) animator.SetTrigger("Attack1");
         else animator.SetTrigger("Attack2");
     }
@@ -135,7 +146,6 @@ public class LizardAI : MonoBehaviour
         agent.enabled = false;
 
         animator.SetTrigger("Die");
-
 
         QuestManager.Instance.ReportEvent(ObjectiveType.Kill, "lezard");
 
