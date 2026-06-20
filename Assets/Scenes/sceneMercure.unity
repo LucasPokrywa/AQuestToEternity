@@ -2359,7 +2359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GolemAI
   maxHealth: 100
   attackDamage: 15
-  player: {fileID: 0}
+  player: {fileID: 983765654}
   detectionRange: 10
   attackRange: 2
   attackCooldown: 2
