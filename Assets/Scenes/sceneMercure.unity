@@ -1303,6 +1303,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7706704133163136415, guid: 1b9c9bd520ad54747a98d7222069677a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 921628984}
+    - targetCorrespondingSourceObject: {fileID: 7706704133163136415, guid: 1b9c9bd520ad54747a98d7222069677a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 921628985}
   m_SourcePrefab: {fileID: 100100000, guid: 1b9c9bd520ad54747a98d7222069677a, type: 3}
 --- !u!1001 &641533091
 PrefabInstance:
@@ -2318,7 +2321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   maxHealth: 10
   attackDamage: 15
-  player: {fileID: 0}
+  player: {fileID: 983765654}
   detectionRange: 15
   attackRange: 2
   attackCooldown: 2
@@ -2333,7 +2336,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2526,6 +2529,27 @@ MonoBehaviour:
   activationDistance: 50
   promptText: {fileID: 137765895}
   sceneToLoadAsset: {fileID: 102900000, guid: d80a364ef90e1f04dafd70b24d12a3d3, type: 3}
+--- !u!65 &921628985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921628980}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 72.40033, y: 23.242855, z: 111.719864}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &937818854
 PrefabInstance:
   m_ObjectHideFlags: 0
