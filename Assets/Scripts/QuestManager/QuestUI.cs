@@ -28,7 +28,7 @@ public class QuestUI : MonoBehaviour
 
         if (checklistGO == null)
         {
-            Debug.Log("❌ ChecklistMission introuvable dans la scène !");
+            Debug.LogWarning("❌ ChecklistMission introuvable dans la scène !");
             return;
         }
 
@@ -36,7 +36,7 @@ public class QuestUI : MonoBehaviour
 
         if (checklistText == null)
         {
-            Debug.Log("❌ Aucun Text trouvé sur ChecklistMission !");
+            Debug.LogError("❌ Aucun Text trouvé sur ChecklistMission !");
         }
     }
 
