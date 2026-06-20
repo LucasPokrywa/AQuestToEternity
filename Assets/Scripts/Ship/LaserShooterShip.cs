@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class LaserShooter : MonoBehaviour
+public class LaserShooterShip : MonoBehaviour
 {
     public Camera playerCamera;
     public GameObject laserProjectilePrefab;

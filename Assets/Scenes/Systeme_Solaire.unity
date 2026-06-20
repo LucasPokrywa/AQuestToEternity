@@ -1949,6 +1949,7 @@ GameObject:
   - component: {fileID: 1103660328}
   - component: {fileID: 1103660329}
   - component: {fileID: 1103660330}
+  - component: {fileID: 1103660331}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -2473,12 +2474,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaserShooter
   playerCamera: {fileID: 330585545}
-  laserProjectilePrefab: {fileID: 5069237008880303043, guid: 73fec82cb400fcf4490cf58909f4cd1a, type: 3}
-  targetingSystem: {fileID: 1103660325}
-  missionManager: {fileID: 1195699636}
+  laserLine: {fileID: 0}
+  range: 10000
   fireRate: 0.5
-  projectileStartDistance: 20
-  projectileVerticalOffset: 0
+  laserDuration: 0.06
+  laserStartDistance: 0
+  laserVerticalOffset: 8
+  damage: 1
 --- !u!114 &1103660330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2496,6 +2498,25 @@ MonoBehaviour:
   promptText: {fileID: 1286598334}
   promptPanel: {fileID: 2115913247}
   interactionRange: 50
+--- !u!114 &1103660331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103660317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a3aed66d8f57040b3ed18cbe631570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LaserShooterShip
+  playerCamera: {fileID: 330585545}
+  laserProjectilePrefab: {fileID: 5069237008880303043, guid: 8cc7a46b0fb397f4d9a09d28f2c0c71b, type: 3}
+  targetingSystem: {fileID: 1103660325}
+  missionManager: {fileID: 1195699636}
+  fireRate: 0.25
+  projectileStartDistance: 20
+  projectileVerticalOffset: -2
 --- !u!1 &1123564471
 GameObject:
   m_ObjectHideFlags: 0
