@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 223138953}
   m_Layer: 0
   m_Name: Sol
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1636,7 +1636,7 @@ GameObject:
   - component: {fileID: 715622017}
   m_Layer: 0
   m_Name: Terrain Main
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 236d5bf136bb9bc44be09bbfbd36fa45, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 76395f5cfebb8a649ad80e4c03fdd4cd, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &742352015
 GameObject:
@@ -2679,7 +2679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 159f0d9d0bdc4b04589f552f914c2df4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 297.9
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 159f0d9d0bdc4b04589f552f914c2df4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2687,7 +2687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 159f0d9d0bdc4b04589f552f914c2df4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 789.1
+      value: 161
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 159f0d9d0bdc4b04589f552f914c2df4, type: 3}
       propertyPath: m_LocalRotation.w
