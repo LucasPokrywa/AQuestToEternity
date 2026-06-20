@@ -19,6 +19,7 @@ public class PlanetLandingDetector : MonoBehaviour
     [SerializeField] private GameObject landingText;
     [SerializeField] private GameObject landingPanel;
     [SerializeField] private MissionManager missionManager;
+    [SerializeField] public QuestData missionRequiseMercure, missionRequiseVenus;
 
     private bool playerIsNear = false;
 
@@ -81,19 +82,25 @@ public class PlanetLandingDetector : MonoBehaviour
 
         if (playerIsNear && keyboard.eKey.wasPressedThisFrame)
         {
-            if (missionManager != null)
+            if (planetName == "Mercure" && QuestManager.Instance.IsQuestCompleted(missionRequiseMercure))
             {
-                if (planetName == "Mercure")
-                    missionManager.LandOnMercury();
 
-                if (planetName == "Venus")
-                    missionManager.LandOnVenus();
+                if (!string.IsNullOrEmpty(sceneName))
+                    SceneManager.LoadScene(sceneName);
+                else
+                    Debug.LogError("Aucune scène assignée pour " + planetName);
             }
 
-            if (!string.IsNullOrEmpty(sceneName))
-                SceneManager.LoadScene(sceneName);
-            else
-                Debug.LogError("Aucune scène assignée pour " + planetName);
+            if (planetName == "Venus" && QuestManager.Instance.IsQuestCompleted(missionRequiseVenus))
+            {
+
+                if (!string.IsNullOrEmpty(sceneName))
+                    SceneManager.LoadScene(sceneName);
+                else
+                    Debug.LogError("Aucune scène assignée pour " + planetName);
+            }
+
+
         }
     }
 }

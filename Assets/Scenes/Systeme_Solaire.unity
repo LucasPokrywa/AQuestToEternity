@@ -3960,6 +3960,8 @@ MonoBehaviour:
   landingText: {fileID: 2079347532}
   landingPanel: {fileID: 565256283}
   missionManager: {fileID: 0}
+  missionRequiseMercure: {fileID: 11400000, guid: 1de7dcecbd60958479032be8d8b8a933, type: 2}
+  missionRequiseVenus: {fileID: 11400000, guid: 2a68167e6e43f9249b73f511e1d088bb, type: 2}
 --- !u!1 &1729649900
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,6 +4275,8 @@ MonoBehaviour:
   landingText: {fileID: 2111375204}
   landingPanel: {fileID: 565256283}
   missionManager: {fileID: 0}
+  missionRequiseMercure: {fileID: 11400000, guid: 1de7dcecbd60958479032be8d8b8a933, type: 2}
+  missionRequiseVenus: {fileID: 11400000, guid: 2a68167e6e43f9249b73f511e1d088bb, type: 2}
 --- !u!1 &1971956726
 GameObject:
   m_ObjectHideFlags: 0

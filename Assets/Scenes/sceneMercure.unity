@@ -3954,8 +3954,8 @@ MonoBehaviour:
       amount: 3
   - zoneName: Zone 2
     zoneAnchor: {fileID: 0}
-    zoneCenter: {x: 733.4, y: 34.7, z: 700.56}
-    zoneSize: {x: 100, y: 0, z: 100}
+    zoneCenter: {x: 648.9, y: 20.4, z: 819.5}
+    zoneSize: {x: 75, y: 0, z: 75}
     monstersToSpawn:
     - prefab: {fileID: 1757966977}
       amount: 3
