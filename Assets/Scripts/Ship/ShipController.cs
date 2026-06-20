@@ -12,10 +12,16 @@ public class ShipController : MonoBehaviour
     public Collider[] blockingTriggers;
     public float shipRadius = 1f;
 
+    [Header("Engine Trails")]
+    public TrailRenderer leftTrail;
+    public TrailRenderer rightTrail;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        SetTrails(false);
     }
 
     void Update()
@@ -46,6 +52,8 @@ public class ShipController : MonoBehaviour
         if (keyboard.leftCtrlKey.isPressed)
             moveUp = -1f;
 
+        SetTrails(moveForward > 0f);
+
         transform.Rotate(Vector3.up * turn * rotationSpeed * Time.deltaTime);
 
         Vector3 movement =
@@ -60,6 +68,15 @@ public class ShipController : MonoBehaviour
         }
     }
 
+    private void SetTrails(bool active)
+    {
+        if (leftTrail != null)
+            leftTrail.emitting = active;
+
+        if (rightTrail != null)
+            rightTrail.emitting = active;
+    }
+
     private bool WouldEnterBlockingTrigger(Vector3 nextPosition)
     {
         foreach (Collider trigger in blockingTriggers)
@@ -68,13 +85,10 @@ public class ShipController : MonoBehaviour
                 continue;
 
             Vector3 closestPoint = trigger.ClosestPoint(nextPosition);
-
             float distance = Vector3.Distance(nextPosition, closestPoint);
 
             if (distance < shipRadius)
-            {
                 return true;
-            }
         }
 
         return false;
