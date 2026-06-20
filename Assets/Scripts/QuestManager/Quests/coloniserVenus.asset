@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a41a2ad6692e549b5463f562f1e71c, type: 3}
   m_Name: coloniserVenus
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questName: Colonisez Venus
-  description: Activez la balise pour coloniser venus
+  questName: "Colonisez V\xE9nus"
+  description: "Activez la balise pour coloniser V\xE9nus"
   objectives:
   - description: Activez la balise
     type: 2
@@ -21,4 +21,3 @@ MonoBehaviour:
     requiredAmount: 1
   prerequisites:
   - {fileID: 11400000, guid: 2a68167e6e43f9249b73f511e1d088bb, type: 2}
-  rewardXP: 0

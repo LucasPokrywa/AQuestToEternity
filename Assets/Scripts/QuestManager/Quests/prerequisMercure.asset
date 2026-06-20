@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a41a2ad6692e549b5463f562f1e71c, type: 3}
   m_Name: prerequisMercure
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  questName: Prerequis Mercure
-  description: egeg
+  questName: "Pr\xE9requis Mercure"
+  description: "R\xE9alisez les pr\xE9requis pour coloniser Mercure"
   objectives:
   - description: Collecter des asterioids
     type: 1
