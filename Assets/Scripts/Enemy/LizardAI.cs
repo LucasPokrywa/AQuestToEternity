@@ -78,8 +78,8 @@ public class LizardAI : MonoBehaviour
     {
         if (agent.isOnNavMesh)
             agent.isStopped = true;
-        animator.SetFloat("Speed", 0f); // Correspond au param�tre Float de ton Animator
-        animator.SetBool("InBattle", false); // Correspond au param�tre Bool de ton Animator
+        animator.SetFloat("Speed", 0f);
+        animator.SetBool("InBattle", false);
     }
 
     void Chase()
@@ -89,7 +89,7 @@ public class LizardAI : MonoBehaviour
             agent.isStopped = false;
             agent.SetDestination(player.position);
         }
-        animator.SetFloat("Speed", 1f); // Modifie la valeur selon ce qui d�clenche ta transition vers "run"
+        animator.SetFloat("Speed", 4f);
         animator.SetBool("InBattle", false);
     }
 
@@ -142,7 +142,7 @@ public class LizardAI : MonoBehaviour
         Destroy(gameObject, 5f);
     }
 
-    // Cette m�thode sera appel�e par une Animation Event
+    // Cette méthode sera appelée par une Animation Event
     public void DealDamage()
     {
         if (player == null)

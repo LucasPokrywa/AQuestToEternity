@@ -1199,7 +1199,7 @@ GameObject:
   - component: {fileID: 492844474}
   m_Layer: 0
   m_Name: TerrainMain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
   m_SerializedVersion: 0
   m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
@@ -1309,7 +1309,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 70939fb5ac653ce478df37ce3428b8bd, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 236d5bf136bb9bc44be09bbfbd36fa45, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &521996038
 GameObject:
@@ -3560,7 +3560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8601d184c8fcf75489e775f83bf416b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 10
+  maxHealth: 100
   healthBar: {fileID: 0}
   fillImage: {fileID: 0}
   deathCanvas: {fileID: 0}
@@ -5116,7 +5116,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.4
+  near clip plane: 0.6
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -5145,7 +5145,7 @@ Transform:
   m_GameObject: {fileID: 1892068871}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15509996, z: 0.0029000002}
+  m_LocalPosition: {x: 0, y: 0.15509996, z: 0.0087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
