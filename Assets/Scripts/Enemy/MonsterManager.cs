@@ -138,7 +138,7 @@ public class MonsterManager : MonoBehaviour
 
                         // Snap onto the baked NavMesh so the agent isn't
                         // spawned in a spot it's never "on".
-                        if (NavMesh.SamplePosition(pos, out NavMeshHit navHit, 5f, NavMesh.AllAreas))
+                        if (NavMesh.SamplePosition(pos, out NavMeshHit navHit, 100f, NavMesh.AllAreas))
                         {
                             pos = navHit.position;
                         }
@@ -149,7 +149,7 @@ public class MonsterManager : MonoBehaviour
 
                         GameObject go = Instantiate(monsterType.prefab, pos, Quaternion.identity);
                         go.SetActive(true); // make sure Awake/OnEnable have run
-
+                        Debug.Log($"Spawn du monstre : {pos}");
                         Monster monster = go.GetComponent<Monster>();
                         monster.monsterId = System.Guid.NewGuid().ToString();
                         monster.sourcePrefab = monsterType.prefab;
