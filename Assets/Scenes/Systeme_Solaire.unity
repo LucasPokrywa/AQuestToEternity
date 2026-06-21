@@ -2911,7 +2911,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2291580969414948220, guid: 63c6c4e98ff02754e9d4e9f46fa15df0, type: 3}
       propertyPath: m_Name
-      value: Sun
+      value: Soleil
       objectReference: {fileID: 0}
     - target: {fileID: 7062546272585811295, guid: 63c6c4e98ff02754e9d4e9f46fa15df0, type: 3}
       propertyPath: m_LocalScale.x
@@ -2992,7 +2992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1212574684}
   m_Layer: 0
-  m_Name: Sun
+  m_Name: Soleil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3164,7 +3164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1733945558841920, guid: 300f80108a63f48618cb4a1c8b8c1e86, type: 3}
       propertyPath: m_Name
-      value: Earth
+      value: Terre
       objectReference: {fileID: 0}
     - target: {fileID: 1733945558841920, guid: 300f80108a63f48618cb4a1c8b8c1e86, type: 3}
       propertyPath: m_Layer
@@ -3273,7 +3273,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1901559596380486, guid: baebbc833ecda42dd8a75966c9f62420, type: 3}
       propertyPath: m_Name
-      value: Pluto
+      value: Pluton
       objectReference: {fileID: 0}
     - target: {fileID: 4103310470163434, guid: baebbc833ecda42dd8a75966c9f62420, type: 3}
       propertyPath: m_LocalScale.x
@@ -4276,7 +4276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1856687845478954, guid: ab152f61198d54532ae39108e616ff59, type: 3}
       propertyPath: m_Name
-      value: Mercury
+      value: Mercure
       objectReference: {fileID: 0}
     - target: {fileID: 1856687845478954, guid: ab152f61198d54532ae39108e616ff59, type: 3}
       propertyPath: m_Layer
@@ -4569,7 +4569,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1408581670749804, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
       propertyPath: m_Name
-      value: Moon
+      value: Lune
       objectReference: {fileID: 0}
     - target: {fileID: 4693579709242440, guid: f9a741bb8762344c6a2a9cb4217ef728, type: 3}
       propertyPath: m_LocalScale.x
@@ -4841,7 +4841,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1377197793697218, guid: b4201d402613a4464b35c805dafcca62, type: 3}
       propertyPath: m_Name
-      value: Saturn
+      value: Saturne
       objectReference: {fileID: 0}
     - target: {fileID: 4677324220665258, guid: b4201d402613a4464b35c805dafcca62, type: 3}
       propertyPath: m_LocalScale.x
