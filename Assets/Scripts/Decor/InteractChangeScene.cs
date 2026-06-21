@@ -19,7 +19,7 @@ public class InteractChangeScene : MonoBehaviour
 #if UNITY_EDITOR
     public SceneAsset sceneToLoadAsset;
 #endif
-    private string sceneToLoad;
+    [SerializeField] private string sceneToLoad;
 
     [Header("Mission Requise")]
     public QuestData missionRequiseVaisseau;

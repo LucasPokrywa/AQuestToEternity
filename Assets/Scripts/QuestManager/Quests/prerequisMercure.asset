@@ -18,7 +18,7 @@ MonoBehaviour:
   - description: Collecter des asterioids
     type: 1
     targetID: asteroides
-    requiredAmount: 10
+    requiredAmount: 15
   - description: "Detruire des ast\xE9roides"
     type: 0
     targetID: asteroides

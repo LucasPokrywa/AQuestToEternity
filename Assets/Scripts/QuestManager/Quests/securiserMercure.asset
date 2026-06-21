@@ -22,6 +22,6 @@ MonoBehaviour:
   - description: Tuer des golems
     type: 0
     targetID: golem
-    requiredAmount: 5
+    requiredAmount: 2
   prerequisites:
   - {fileID: 11400000, guid: 1de7dcecbd60958479032be8d8b8a933, type: 2}

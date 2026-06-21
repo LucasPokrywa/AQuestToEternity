@@ -4447,6 +4447,7 @@ MonoBehaviour:
   activationDistance: 50
   promptText: {fileID: 137765895}
   sceneToLoadAsset: {fileID: 102900000, guid: d80a364ef90e1f04dafd70b24d12a3d3, type: 3}
+  sceneToLoad: Systeme_Solaire
   missionRequiseVaisseau: {fileID: 11400000, guid: 56ec9a9b6b4b03249bc2fc3ffc485949, type: 2}
 --- !u!65 &921628985
 BoxCollider:
@@ -7250,7 +7251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!225 &1675538255
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7369,7 +7370,15 @@ MonoBehaviour:
   blackBarTop: {fileID: 2063632453}
   blackBarBottom: {fileID: 2067229020}
   blackBarHeight: 1085.4
-  otherUIToHide: []
+  otherUIToHide:
+  - {fileID: 772464944}
+  - {fileID: 1834306907}
+  - {fileID: 1078216421}
+  - {fileID: 562413757}
+  - {fileID: 423824937}
+  - {fileID: 132758359}
+  - {fileID: 137765893}
+  - {fileID: 654278156}
   victoryMusic: {fileID: 1094100241}
   backgroundMusic: {fileID: 1732633188}
 --- !u!1 &1696341329
