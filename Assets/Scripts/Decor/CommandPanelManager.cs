@@ -31,9 +31,10 @@ public class CommandPanelManager : MonoBehaviour
         actionsText.text =
             "T : Cibler planète\n" +
             "R : Cibler astéroïde\n" +
+            "← / → : Changer de cible\n" +
             "Clic gauche : Tirer\n" +
             "E : Atterrir / Collecter\n" +
-            "← / → : Changer de cible";
+            "F : Quitter siège";
 
         UpdateButtonColors(true);
     }
@@ -47,8 +48,7 @@ public class CommandPanelManager : MonoBehaviour
 
         actionsText.text =
             "E : Interagir\n" +
-            "Clic gauche : Utiliser\n" +
-            "Échap : Pause / Retour";
+            "Clic gauche : Tirer";
 
         UpdateButtonColors(false);
     }
