@@ -18,7 +18,7 @@ MonoBehaviour:
   - description: Tuer des lezards
     type: 0
     targetID: lezard
-    requiredAmount: 30
+    requiredAmount: 20
   - description: Tuer des golems
     type: 0
     targetID: golem
