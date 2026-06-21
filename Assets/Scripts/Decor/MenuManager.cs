@@ -6,6 +6,7 @@ public class MenuManager : MonoBehaviour
     [Header("Panels")]
     public GameObject mainMenu;
     public GameObject commandPanel;
+    public GameObject synopsis;
 
     private void Start()
     {
@@ -28,6 +29,12 @@ public class MenuManager : MonoBehaviour
     {
         commandPanel.SetActive(false);
         mainMenu.SetActive(true);
+    }
+    public void Synopsis()
+    {
+        commandPanel.SetActive(false);
+        mainMenu.SetActive(false);
+        synopsis.SetActive(true);
     }
 
     public void Quitter()
