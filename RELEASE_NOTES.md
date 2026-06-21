@@ -6,9 +6,9 @@
 
 ## Mécaniques principales
 
-- Pilotage libre du vaisseau avec déplacements verticaux et accélération.
+- Pilotage libre du vaisseau avec déplacements verticaux.
 - Verrouillage et sélection des planètes ou des astéroïdes.
-- Collecte d’astéroïdes et combat spatial au laser.
+- Collecte d’astéroïdes et destruction au laser.
 - Exploration au sol en vue FPS ou TPS.
 - Combat contre des lézards et des golems disposant d’une IA, d’animations et de points de vie.
 - Système de quêtes avec objectifs, progression et prérequis.
@@ -34,8 +34,7 @@
 - `Z/S` : avancer ou reculer.
 - `Q/D` : tourner.
 - `Espace` / `Ctrl gauche` : monter ou descendre.
-- `Maj gauche` : accélérer.
-- `F` : entrer dans le vaisseau, en sortir ou ouvrir son interface.
+- `F` : Quitter le siège du pilote pour se balader dans le vaisseau ou reprendre les commandes du vaisseau
 - `T` : cibler une planète.
 - `R` : cibler un astéroïde.
 - Flèches gauche/droite : changer de cible.
@@ -44,7 +43,7 @@
 
 ## Règles et objectifs
 
-Pour débloquer Vénus, il faut en collecter 15 et en détruire 20. Pour débloquer Mercure, il faut collecter 10 astéroïdes et en détruire 20. 
+Pour débloquer Vénus, il faut collecter 15 astéroïdes et en détruire 20. Pour débloquer Mercure, il faut collecter 10 astéroïdes et en détruire 20. 
 
 Une fois au sol, chaque planète doit être sécurisée en éliminant 20 lézards et 5 golems. Le joueur doit ensuite activer la balise de la planète pour terminer sa colonisation. 
 Les missions sont débloquées progressivement selon leurs prérequis.
@@ -65,7 +64,7 @@ La partie est perdue lorsque les points de vie du personnage atteignent zéro.
 
 - **Lucas Pokrywa** : système de quêtes et de prérequis, interface des missions, conception et intégration des scènes de Mercure et Vénus, terrains, balises, transitions entre les scènes, menu principal, équilibrage et intégration générale.
 - **Kadir Ersoy** : système solaire, pilotage du vaisseau, ceinture d’astéroïdes, collecte et destruction des astéroïdes, ciblage et tir spatial, collisions avec les planètes, désynchronisation et réapparition, interface des commandes et intégration musicale.
-- **Valentin Hodonou** : personnage jouable, points de vie et combat au sol, ennemis, IA et navigation NavMesh, animations des personnages et intégration des effets sonores des monstres.
+- **Valentin Hodonou** : personnage jouable, points de vie et combat au sol, ennemis, IA et navigation NavMesh, animations des personnages et intégration des effets sonores des monstres, intérieur du vaissseau et cinématique de victoire.
 
 ## Assets réalisés en propre
 
@@ -88,9 +87,7 @@ Le projet contient notamment les packs externes suivants :
 - Free Sci-Fi Drone.
 - Free Skyboxes – Space.
 - Hatogame Lizard.
-- Kevin Iglesias Humanoid Giant.
 - Siuniaev Characters – Golem.
-- Sci-Fi Trooper Man.
 - Sci-Fi Modular Pack / 3D Sci-Fi Kit.
 - Planets of the Solar System 3D.
 - Procedural Planet Generation de Parallel Cascades.
@@ -102,12 +99,17 @@ Le projet contient notamment les packs externes suivants :
 
 ## Assets audio récupérés sur Internet
 
-- `Gun2_1.wav` — « Laser Gun Sound », par NomAuteur.
-  Source : Freesound.
-  Licence : Creative Commons Attribution 4.0.
-  Modifications : volume réduit et durée raccourcie.
+- `Gun2_1.wav` — « Laser Gun Sound », par Mikael Vanninem.
+  Source : Unity Asset Store.
+  Licence : Unity Asset Store EULA.
+  Modifications : Volume réduit.
 
-- `08. Titan Roar.wav` — « Titan Roar », par NomAuteur.
+- `25. Warning Growl.wav` - « Warning Growl », par *VoiceBosch*.
+  Source : Unity Asset Store.
+  Licence : Unity Asset Store EULA.
+  Modifications : aucune.
+
+- `02. Ferocious Roar.wav` - « Ferocious Roar », par *VoiceBosch*.
   Source : Unity Asset Store.
   Licence : Unity Asset Store EULA.
   Modifications : aucune.
@@ -116,6 +118,10 @@ Le projet contient notamment les packs externes suivants :
 ## Assets audio fournis par un tiers
 
 - `piano train` et `dessin animé` : créé et fourni par Dylan Marquses, utilisé dans *A Quest to Eternity* avec son autorisation. Tous les droits restent réservés à son auteur.
+
+## Assets audio créé par nous même
+
+- `Unity_Projet` : Créé et fourni par Valentin Hodonou, utilisé dans *A Quest to Eternity*. Tous les droits restent réservés à son auteur.
   
 ## Assets audio réalisés en propre
 
