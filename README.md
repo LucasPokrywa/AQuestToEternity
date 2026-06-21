@@ -84,7 +84,7 @@ Le projet utilise **Unity 6000.3.11f1**.
 
 ### Assets audio réalisés en propre
 
-- `piano train` et `dessin animé` : musiques composées et produites par Lucas Pokrywa.
+- `piano train` et `dessin animé` : musiques composées et produites par Dylan Marques
 - `roars`, `growl` et `Gun2_1` : effets sonores créés par Valentin Hodonou.
 - `targetLockSound.wav` : effet sonore créé par Kadir Ersoy.
 
