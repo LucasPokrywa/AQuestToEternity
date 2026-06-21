@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f717c5335b0bd274ea0172a7d7d0e18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  maxHealth: 5
+  maxHealth: 15
   attackDamage: 15
   player: {fileID: 32651555}
   detectionRange: 100
