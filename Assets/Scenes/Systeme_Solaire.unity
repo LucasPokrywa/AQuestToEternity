@@ -26542,7 +26542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &366096181
 Transform:
   m_ObjectHideFlags: 0
@@ -79307,7 +79307,6 @@ MonoBehaviour:
   shipUIToHide:
   - {fileID: 1672710674}
   - {fileID: 43094211}
-  - {fileID: 1042834242}
   - {fileID: 1042834242}
   - {fileID: 565256283}
   - {fileID: 2115913247}
