@@ -436,7 +436,7 @@ MonoBehaviour:
   m_TPSLookOffset: {x: 0, y: 1.75, z: -0.75}
   m_BallPrefab: {fileID: 5069237008880303043, guid: cbc78017eae99d44aba67f70be6feee0, type: 3}
   m_BallSpawnPos: {fileID: 542916069}
-  m_BallShootSpeed: 20
+  m_BallShootSpeed: 60
   m_MissileRotationOffset: {x: 0, y: 0, z: 0}
   m_Blaster: {fileID: 154418704}
 --- !u!1 &75553549
@@ -5880,27 +5880,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.024978574
+      value: 0.016588772
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.024978574
+      value: 0.016588772
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.024978574
+      value: 0.016588772
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.033
+      value: -0.0627
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.192
+      value: 0.1969
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.067
+      value: -0.0539
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalRotation.w

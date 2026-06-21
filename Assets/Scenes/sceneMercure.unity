@@ -3925,7 +3925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f717c5335b0bd274ea0172a7d7d0e18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  maxHealth: 10
+  maxHealth: 15
   attackDamage: 25
   player: {fileID: 1604280517}
   detectionRange: 30
@@ -5592,19 +5592,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.024978574
+      value: 0.0143806655
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.024978574
+      value: 0.0143806655
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.024978574
+      value: 0.0143806655
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.033
+      value: -0.0389
       objectReference: {fileID: 0}
     - target: {fileID: 876337426076098065, guid: a2baf755580658246ab3d05ef253813d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6642,7 +6642,7 @@ MonoBehaviour:
   m_TPSLookOffset: {x: 0, y: 1.75, z: -0.75}
   m_BallPrefab: {fileID: 5069237008880303043, guid: cbc78017eae99d44aba67f70be6feee0, type: 3}
   m_BallSpawnPos: {fileID: 893464451}
-  m_BallShootSpeed: 20
+  m_BallShootSpeed: 60
   m_MissileRotationOffset: {x: 0, y: 0, z: 0}
   m_Blaster: {fileID: 1084418346}
 --- !u!1 &1621997190
