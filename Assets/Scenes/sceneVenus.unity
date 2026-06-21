@@ -3358,6 +3358,7 @@ MonoBehaviour:
   prerequisText: {fileID: 1408976649}
   playerToTeleport: {fileID: 0}
   teleportPosition: {x: 692, y: 57, z: 282}
+  isFinalBalise: 0
   missionRequise: {fileID: 11400000, guid: 2a68167e6e43f9249b73f511e1d088bb, type: 2}
 --- !u!1 &612174873
 GameObject:
