@@ -79354,6 +79354,7 @@ MonoBehaviour:
   m_InteriorSpawnPoint: {fileID: 2020531851}
   playerCharacter: {fileID: 2050262661}
   shipCamera: {fileID: 330585543}
+  shipInteriorBase: {fileID: 366096180}
   shipScriptsToDisable:
   - {fileID: 1103660331}
   - {fileID: 1103660330}
