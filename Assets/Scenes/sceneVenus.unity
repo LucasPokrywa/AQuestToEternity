@@ -7162,7 +7162,7 @@ MonoBehaviour:
     - prefab: {fileID: 296106051}
       amount: 7
     - prefab: {fileID: 1949902917}
-      amount: 8
+      amount: 3
     - prefab: {fileID: 188128908}
       amount: 2
 --- !u!4 &1539213753
