@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class DesyncEffectManager : MonoBehaviour
 {
@@ -26,12 +27,21 @@ public class DesyncEffectManager : MonoBehaviour
     private bool isGameOver = false;
     private Vector2 originalCanvasPos;
 
+    private Vector3 startPosition;
+    private Quaternion startRotation;
+
     void Start()
     {
         dangerLevel = 0f;
 
         if (canvasRoot != null)
             originalCanvasPos = canvasRoot.anchoredPosition;
+
+        if (playerObject != null)
+        {
+            startPosition = playerObject.transform.position;
+            startRotation = playerObject.transform.rotation;
+        }
 
         if (noise != null)
             noise.intensity = 0f;
@@ -46,6 +56,12 @@ public class DesyncEffectManager : MonoBehaviour
         {
             SetDangerLevel(1f);
             ShakeUI(4f);
+
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                RespawnPlayer();
+            }
+
             return;
         }
 
@@ -97,7 +113,9 @@ public class DesyncEffectManager : MonoBehaviour
         if (subtitleText != null)
         {
             subtitleText.gameObject.SetActive(true);
-            subtitleText.text = "VOUS AVEZ ÉTÉ DÉCONNECTÉ DU RÉSEAU";
+            subtitleText.text =
+                "VOUS AVEZ ÉTÉ DÉCONNECTÉ DU RÉSEAU\n\n" +
+                "Appuyez sur ESPACE pour respawn";
         }
 
         if (playerObject != null)
@@ -106,6 +124,33 @@ public class DesyncEffectManager : MonoBehaviour
             if (ship != null)
                 ship.enabled = false;
         }
+    }
+
+    private void RespawnPlayer()
+    {
+        isGameOver = false;
+        dangerLevel = 0f;
+
+        if (playerObject != null)
+        {
+            playerObject.transform.position = startPosition;
+            playerObject.transform.rotation = startRotation;
+
+            ShipController ship = playerObject.GetComponent<ShipController>();
+            if (ship != null)
+                ship.enabled = true;
+        }
+
+        if (noise != null)
+            noise.intensity = 0f;
+
+        if (missionChecklistUI != null)
+            missionChecklistUI.SetActive(true);
+
+        HideGameOverUI();
+
+        if (canvasRoot != null)
+            canvasRoot.anchoredPosition = originalCanvasPos;
     }
 
     public void ClearDanger()
