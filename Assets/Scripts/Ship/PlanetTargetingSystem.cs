@@ -338,9 +338,16 @@ public class PlanetTargetingSystem : MonoBehaviour
 
         string type = currentMode == TargetMode.Asteroid ? "ASTÉROÏDE" : "PLANÈTE";
 
+        string name = selectedTarget.name;
+
+        if (type == "ASTÉROÏDE")
+        {
+            name = "";
+        }
+
         targetInfoText.text =
             type + "\n" +
-            selectedTarget.name +
+            name +
             "\nDistance : " + Mathf.RoundToInt(distance) + " u";
 
         if (targetInfoGroup != null)
