@@ -14,6 +14,12 @@ public class InteractBalise : MonoBehaviour
     public Transform playerToTeleport;
     public Vector3 teleportPosition;
 
+    // --- NOUVEAU : Option pour la victoire finale ---
+    [Header("Victoire Finale")]
+    [Tooltip("Cochez cette case UNIQUEMENT pour la balise de la dernière mission (Mercure)")]
+    public bool isFinalBalise = false;
+    // ------------------------------------------------
+
     private Transform playerCam;
     private bool hasInteracted = false;
 
@@ -71,8 +77,6 @@ public class InteractBalise : MonoBehaviour
 
     void Interact()
     {
-
-
         hasInteracted = true;
 
         if (pressEText != null)
@@ -94,6 +98,17 @@ public class InteractBalise : MonoBehaviour
 
 
         QuestManager.Instance.ReportEvent(ObjectiveType.TalkTo, "balise");
+
+        // --- NOUVEAU : DÉCLENCHEMENT DE LA CINÉMATIQUE ---
+        if (isFinalBalise)
+        {
+            VictoryManager victory = FindFirstObjectByType<VictoryManager>();
+            if (victory != null)
+            {
+                victory.TriggerVictory();
+            }
+        }
+        // -------------------------------------------------
 
         gameObject.SetActive(false);
     }
