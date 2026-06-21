@@ -14,7 +14,7 @@
 - Système de quêtes avec objectifs, progression et prérequis.
 - Activation de balises pour coloniser les planètes.
 - Barre de vie, mort du personnage et écran de défaite.
-- Effet de désynchronisation et réapparition lors de la sortie de la zone de jeu.
+- Effet de désynchronisation et réapparition lors de la sortie de la zone de jeu dans l'espace (trop proche du soleil ou assez éloigné des planètes).
 
 ## Contrôles
 

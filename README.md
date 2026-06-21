@@ -19,7 +19,7 @@ Voir les [Release Notes](RELEASE_NOTES.md).
 - Système de quêtes avec objectifs et prérequis.
 - Activation de balises pour coloniser les planètes.
 - Barre de vie, animations, effets sonores et écran de défaite.
-- Système de désynchronisation et de réapparition dans l’espace.
+- Système de désynchronisation et de réapparition lors de la sortie de la zone de jeu dans l'espace (trop proche du soleil ou assez éloigné des planètes).
 
 ## Contrôles
 
