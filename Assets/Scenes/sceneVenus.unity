@@ -3356,7 +3356,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 843496229}
   pressEText: {fileID: 1051381222}
   prerequisText: {fileID: 1408976649}
-  playerToTeleport: {fileID: 0}
+  playerToTeleport: {fileID: 32651555}
   teleportPosition: {x: 692, y: 57, z: 282}
   isFinalBalise: 0
   missionRequise: {fileID: 11400000, guid: 2a68167e6e43f9249b73f511e1d088bb, type: 2}
