@@ -26,6 +26,11 @@ public class ShipController : MonoBehaviour
     [Tooltip("La caméra externe du vaisseau")]
     public GameObject shipCamera;
 
+    // --- NOUVEAU : Référence à l'environnement de la base ---
+    [Header("Environnement de la Base")]
+    [Tooltip("Glissez ici le GameObject parent qui contient tous les murs/objets de votre base")]
+    public GameObject shipInteriorBase;
+
     [Header("Éléments à désactiver à pied")]
     [Tooltip("Glissez ici les scripts du vaisseau (ex: tir, radar) à désactiver")]
     public MonoBehaviour[] shipScriptsToDisable;
@@ -35,7 +40,7 @@ public class ShipController : MonoBehaviour
 
     private bool isFlying = true;
 
-    // --- NOUVEAU : Tableaux de mémoire pour retenir l'état précédent ---
+    // Tableaux de mémoire pour retenir l'état précédent
     private bool[] uiStates;
 
     void Start()
@@ -44,6 +49,12 @@ public class ShipController : MonoBehaviour
         if (shipUIToHide != null)
         {
             uiStates = new bool[shipUIToHide.Length];
+        }
+
+        // --- NOUVEAU : On s'assure que la base est bien éteinte au lancement (vu qu'on commence en vol) ---
+        if (shipInteriorBase != null)
+        {
+            shipInteriorBase.SetActive(false);
         }
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -111,6 +122,12 @@ public class ShipController : MonoBehaviour
         isFlying = false;
         SetTrails(false);
 
+        // --- NOUVEAU : Activer l'environnement de la base ---
+        if (shipInteriorBase != null)
+        {
+            shipInteriorBase.SetActive(true);
+        }
+
         // 1. Placer et activer le joueur dans la base
         if (m_InteriorSpawnPoint != null && playerCharacter != null)
         {
@@ -134,15 +151,12 @@ public class ShipController : MonoBehaviour
         {
             if (shipUIToHide[i] != null)
             {
-                // On prend une "photo" de l'état actuel (allumé ou éteint ?)
                 uiStates[i] = shipUIToHide[i].activeSelf;
-
-                // Ensuite on force la désactivation
                 shipUIToHide[i].SetActive(false);
             }
         }
 
-        Debug.Log("Sortie du siège : Joueur dans la base. États de l'UI sauvegardés.");
+        Debug.Log("Sortie du siège : Joueur dans la base. Base affichée.");
     }
 
     private void ResumePiloting()
@@ -151,6 +165,12 @@ public class ShipController : MonoBehaviour
 
         // 1. Désactiver la SpaceGirl
         if (playerCharacter != null) playerCharacter.SetActive(false);
+
+        // --- NOUVEAU : Désactiver l'environnement de la base pour libérer de la mémoire et la cacher ---
+        if (shipInteriorBase != null)
+        {
+            shipInteriorBase.SetActive(false);
+        }
 
         // 2. Réactiver la caméra du vaisseau
         if (shipCamera != null) shipCamera.SetActive(true);
@@ -167,12 +187,11 @@ public class ShipController : MonoBehaviour
         {
             if (shipUIToHide[i] != null)
             {
-                // On rend au Canvas exactement l'état qu'il avait avant de quitter le siège
                 shipUIToHide[i].SetActive(uiStates[i]);
             }
         }
 
-        Debug.Log("Reprise du contrôle du vaisseau. UI restaurée.");
+        Debug.Log("Reprise du contrôle du vaisseau. Base masquée.");
     }
 
     private void SetTrails(bool active)
